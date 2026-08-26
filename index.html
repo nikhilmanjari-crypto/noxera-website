@@ -5,1302 +5,2168 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
 
-<title>NOXERA — New Era of Streetwear</title>
+<title>NOXERA — Premium Streetwear</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#070707;
-  --card:#101010;
-  --text:#f4f4f4;
-  --muted:#858585;
-  --line:#242424;
-  --soft:#151515;
-}
+
+/* ================= BASIC ================= */
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:"DM Sans",Arial,sans-serif;
-  overflow-x:hidden;
-}
-
-body.lock{
-  overflow:hidden;
+    margin:0;
+    background:#080808;
+    color:#fff;
+    font-family:"DM Sans",Arial,sans-serif;
+    overflow-x:hidden;
 }
 
 a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,
-input,
-select{
-  font:inherit;
+    text-decoration:none;
+    color:inherit;
 }
 
 button{
-  cursor:pointer;
+    font-family:inherit;
+    cursor:pointer;
 }
 
 img{
-  display:block;
-  width:100%;
+    display:block;
+    width:100%;
 }
 
-/* ================= LOADER ================= */
+/* ================= NAVBAR ================= */
 
-.loader{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  background:#050505;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:.7s ease;
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,0)
+    );
+
+    transition:.3s;
 }
 
-.loader.hide{
-  opacity:0;
-  visibility:hidden;
-}
-
-.loader-logo{
-  font-size:34px;
-  font-weight:700;
-  letter-spacing:10px;
-  animation:loadPulse 1.2s infinite;
-}
-
-@keyframes loadPulse{
-  50%{opacity:.35}
-}
-
-/* ================= NAV ================= */
-
-.nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:82px;
-  padding:0 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  z-index:5000;
-  transition:.35s;
-}
-
-.nav.scrolled{
-  background:rgba(7,7,7,.88);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+.navbar.scrolled{
+    background:rgba(8,8,8,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #222;
 }
 
 .logo{
-  font-weight:700;
-  letter-spacing:7px;
-  font-size:24px;
+    font-size:25px;
+    font-weight:700;
+    letter-spacing:7px;
 }
 
-.logo-dot{
-  color:#777;
+.logo span{
+    color:#777;
 }
 
 .nav-links{
-  display:flex;
-  list-style:none;
-  gap:34px;
+    display:flex;
+    gap:32px;
+    list-style:none;
 }
 
 .nav-links a{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  color:#ccc;
-  position:relative;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#ccc;
+    transition:.3s;
 }
 
-.nav-links a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-8px;
-  height:1px;
-  width:0;
-  background:#fff;
-  transition:.3s;
+.nav-links a:hover{
+    color:#fff;
 }
 
-.nav-links a:hover::after{
-  width:100%;
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
 
-.nav-actions{
-  display:flex;
-  align-items:center;
-  gap:20px;
+.nav-button{
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:19px;
 }
 
-.icon-btn{
-  border:0;
-  background:none;
-  color:white;
-  font-size:20px;
-}
-
-.cart-count{
-  position:relative;
-}
-
-.cart-number{
-  position:absolute;
-  top:-9px;
-  right:-10px;
-  width:17px;
-  height:17px;
-  border-radius:50%;
-  background:#fff;
-  color:#000;
-  font-size:9px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.menu{
-  display:none;
-  background:none;
-  color:#fff;
-  border:0;
-  font-size:25px;
+.menu-button{
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:24px;
 }
 
 /* ================= HERO ================= */
 
 .hero{
-  min-height:100vh;
-  position:relative;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
+    min-height:100vh;
+    position:relative;
 
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.12)),
-    linear-gradient(0deg,#070707 0%,transparent 45%),
-    url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=2400&q=90")
-    center/cover;
+    display:flex;
+    align-items:flex-end;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.85),
+            rgba(0,0,0,.25)
+        ),
+        linear-gradient(
+            0deg,
+            #080808 0%,
+            transparent 55%
+        ),
+        url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=2200&q=90");
+
+    background-size:cover;
+    background-position:center;
 }
 
 .hero-content{
-  position:relative;
-  z-index:2;
-  padding:0 7% 9%;
-  max-width:920px;
+    width:100%;
+    padding:0 7% 9%;
 }
 
-.kicker{
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:5px;
-  color:#aaa;
-  margin-bottom:22px;
+.small-title{
+    color:#999;
+    font-size:10px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:22px;
 }
 
 .hero h1{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(70px,10vw,145px);
-  line-height:.83;
-  font-weight:500;
-  letter-spacing:-6px;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(65px,10vw,145px);
+    line-height:.84;
+    font-weight:500;
+    letter-spacing:-5px;
 }
 
 .hero h1 span{
-  color:#a4a4a4;
+    color:#999;
 }
 
-.hero-copy{
-  max-width:480px;
-  color:#aaa;
-  font-size:14px;
-  line-height:1.8;
-  margin-top:28px;
+.hero-text{
+    max-width:470px;
+    color:#aaa;
+    font-size:14px;
+    line-height:1.8;
+    margin-top:28px;
 }
 
-.buttons{
-  display:flex;
-  gap:12px;
-  margin-top:32px;
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:32px;
 }
 
 .btn{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  min-height:50px;
-  padding:0 25px;
-  border:1px solid #555;
-  color:white;
-  background:transparent;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:10px;
-  transition:.3s;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:16px 26px;
+
+    border:1px solid #555;
+    background:transparent;
+    color:#fff;
+
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    transition:.3s;
 }
 
 .btn:hover{
-  transform:translateY(-3px);
-  border-color:white;
+    background:#fff;
+    color:#000;
+    border-color:#fff;
 }
 
-.btn.light{
-  background:white;
-  color:#000;
-  border-color:white;
+.btn-white{
+    background:#fff;
+    color:#000;
+    border-color:#fff;
 }
 
-.hero-side{
-  position:absolute;
-  right:5%;
-  bottom:9%;
-  writing-mode:vertical-rl;
-  color:#888;
-  font-size:9px;
-  letter-spacing:4px;
+.hero-scroll{
+    position:absolute;
+    right:5%;
+    bottom:8%;
+
+    writing-mode:vertical-rl;
+
+    color:#777;
+    font-size:9px;
+    letter-spacing:4px;
 }
 
 /* ================= MARQUEE ================= */
 
 .marquee{
-  overflow:hidden;
-  white-space:nowrap;
-  padding:20px 0;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+
+    padding:19px 0;
+
+    border-top:1px solid #222;
+    border-bottom:1px solid #222;
+
+    background:#0b0b0b;
 }
 
-.marquee-track{
-  display:inline-block;
-  animation:marquee 28s linear infinite;
+.marquee-content{
+    display:inline-block;
+    animation:moveText 25s linear infinite;
 }
 
 .marquee span{
-  color:#777;
-  font-size:11px;
-  letter-spacing:4px;
-  margin:0 30px;
+    margin:0 30px;
+    color:#777;
+    font-size:11px;
+    letter-spacing:4px;
 }
 
-@keyframes marquee{
-  to{transform:translateX(-50%)}
+@keyframes moveText{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
 }
 
-/* ================= SECTIONS ================= */
+/* ================= SECTION ================= */
 
 .section{
-  padding:120px 7%;
+    padding:110px 7%;
 }
 
-.heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  margin-bottom:50px;
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:45px;
 }
 
-.label{
-  color:#666;
-  font-size:10px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  margin-bottom:12px;
+.section-number{
+    color:#666;
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:12px;
 }
 
-.title{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(45px,6vw,75px);
-  font-weight:500;
-  line-height:1;
+.section-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(45px,6vw,75px);
+    font-weight:500;
+    line-height:1;
 }
 
-.heading-copy{
-  max-width:350px;
-  color:#777;
-  font-size:13px;
-  line-height:1.8;
+.section-description{
+    max-width:350px;
+    color:#777;
+    font-size:13px;
+    line-height:1.8;
 }
 
 /* ================= PRODUCTS ================= */
 
 .products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
 }
 
 .product{
-  min-width:0;
+    min-width:0;
 }
 
 .product-image{
-  position:relative;
-  height:500px;
-  overflow:hidden;
-  background:#111;
+    position:relative;
+    height:500px;
+    overflow:hidden;
+    background:#111;
 }
 
 .product-image img{
-  height:100%;
-  object-fit:cover;
-  transition:1s cubic-bezier(.2,.7,.2,1);
+    height:100%;
+    object-fit:cover;
+    transition:1s;
 }
 
 .product:hover .product-image img{
-  transform:scale(1.06);
+    transform:scale(1.06);
 }
 
-.badge{
-  position:absolute;
-  left:14px;
-  top:14px;
-  z-index:2;
-  padding:7px 10px;
-  background:white;
-  color:black;
-  font-size:8px;
-  letter-spacing:2px;
+.product-label{
+    position:absolute;
+    top:14px;
+    left:14px;
+    z-index:2;
+
+    padding:7px 10px;
+
+    background:#fff;
+    color:#000;
+
+    font-size:8px;
+    letter-spacing:2px;
 }
 
-.quick-add{
-  position:absolute;
-  left:14px;
-  right:14px;
-  bottom:14px;
-  border:0;
-  background:rgba(255,255,255,.95);
-  color:#000;
-  padding:14px;
-  font-size:9px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  transform:translateY(70px);
-  transition:.35s;
+.add-button{
+    position:absolute;
+    left:14px;
+    right:14px;
+    bottom:14px;
+
+    padding:14px;
+
+    border:0;
+    background:#fff;
+    color:#000;
+
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    opacity:0;
+    transform:translateY(20px);
+    transition:.3s;
 }
 
-.product:hover .quick-add{
-  transform:translateY(0);
+.product:hover .add-button{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .product-info{
-  padding:17px 2px 35px;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+
+    padding:17px 2px 30px;
 }
 
 .product-name{
-  font-size:13px;
+    font-size:13px;
 }
 
-.product-sub{
-  color:#666;
-  font-size:10px;
-  margin-top:7px;
-  letter-spacing:1px;
+.product-category{
+    margin-top:7px;
+    color:#666;
+    font-size:10px;
+    letter-spacing:1px;
 }
 
 .product-price{
-  white-space:nowrap;
-  font-size:13px;
+    white-space:nowrap;
+    font-size:13px;
 }
 
 /* ================= FEATURE ================= */
 
 .feature{
-  min-height:720px;
-  display:flex;
-  align-items:center;
-  position:relative;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.15)),
-    url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=2300&q=90")
-    center/cover;
+    min-height:700px;
+
+    display:flex;
+    align-items:center;
+
+    padding:100px 7%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.88),
+            rgba(0,0,0,.15)
+        ),
+        url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=2200&q=90");
+
+    background-size:cover;
+    background-position:center;
 }
 
 .feature-content{
-  max-width:600px;
+    max-width:620px;
 }
 
 .feature h2{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(55px,8vw,105px);
-  font-weight:500;
-  line-height:.88;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(55px,8vw,105px);
+    line-height:.87;
+    font-weight:500;
 }
 
-.feature h2 em{
-  color:#999;
+.feature h2 span{
+    color:#999;
 }
 
 .feature p{
-  color:#aaa;
-  max-width:460px;
-  font-size:14px;
-  line-height:1.8;
-  margin:30px 0;
+    max-width:460px;
+    color:#aaa;
+    font-size:14px;
+    line-height:1.8;
+    margin:30px 0;
 }
 
 /* ================= CATEGORIES ================= */
 
 .categories{
-  display:grid;
-  grid-template-columns:1.4fr 1fr 1fr;
-  gap:16px;
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:16px;
 }
 
 .category{
-  height:600px;
-  position:relative;
-  overflow:hidden;
-  background:#111;
+    height:600px;
+    position:relative;
+    overflow:hidden;
 }
 
 .category img{
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.65);
-  transition:1s;
+    height:100%;
+    object-fit:cover;
+
+    filter:brightness(.65);
+
+    transition:1s;
 }
 
 .category:hover img{
-  transform:scale(1.06);
-  filter:brightness(.88);
+    transform:scale(1.06);
+    filter:brightness(.9);
 }
 
 .category::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(transparent 50%,rgba(0,0,0,.85));
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 45%,
+            rgba(0,0,0,.85)
+        );
 }
 
-.category-text{
-  position:absolute;
-  left:28px;
-  bottom:28px;
-  z-index:2;
+.category-content{
+    position:absolute;
+    left:28px;
+    bottom:28px;
+    z-index:2;
 }
 
-.category-text small{
-  color:#aaa;
-  font-size:9px;
-  letter-spacing:3px;
+.category-content small{
+    color:#aaa;
+    font-size:9px;
+    letter-spacing:3px;
 }
 
-.category-text h3{
-  font-family:"Playfair Display",serif;
-  font-size:40px;
-  font-weight:500;
-  margin-top:6px;
+.category-content h3{
+    margin-top:7px;
+
+    font-family:"Playfair Display",serif;
+    font-size:40px;
+    font-weight:500;
 }
 
 /* ================= LOOKBOOK ================= */
 
 .lookbook{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
 }
 
 .look{
-  position:relative;
-  overflow:hidden;
+    position:relative;
+    overflow:hidden;
 }
 
 .look:first-child{
-  grid-row:span 2;
+    grid-row:span 2;
 }
 
 .look img{
-  height:100%;
-  object-fit:cover;
-  transition:1s;
+    height:100%;
+    object-fit:cover;
+    transition:1s;
 }
 
 .look:first-child img{
-  height:840px;
+    height:830px;
 }
 
 .look:not(:first-child) img{
-  height:412px;
+    height:407px;
 }
 
 .look:hover img{
-  transform:scale(1.04);
+    transform:scale(1.04);
 }
 
-.look-caption{
-  position:absolute;
-  left:25px;
-  bottom:25px;
-  z-index:2;
-  font-family:"Playfair Display",serif;
-  font-size:28px;
+.look-text{
+    position:absolute;
+    left:25px;
+    bottom:25px;
+
+    font-family:"Playfair Display",serif;
+    font-size:28px;
+
+    z-index:2;
 }
 
-/* ================= STORY ================= */
+/* ================= BRAND STORY ================= */
 
 .story{
-  min-height:650px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:
-    linear-gradient(rgba(0,0,0,.76),rgba(0,0,0,.86)),
-    url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2400&q=90")
-    center/cover fixed;
+    min-height:650px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:100px 7%;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.76),
+            rgba(0,0,0,.88)
+        ),
+        url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=90");
+
+    background-size:cover;
+    background-position:center;
 }
 
-.story-inner{
-  max-width:850px;
+.story-content{
+    max-width:850px;
 }
 
 .story h2{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(55px,8vw,110px);
-  line-height:.9;
-  font-weight:500;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(55px,8vw,105px);
+    line-height:.9;
+    font-weight:500;
 }
 
 .story p{
-  color:#aaa;
-  max-width:560px;
-  margin:30px auto;
-  font-size:14px;
-  line-height:1.9;
+    max-width:570px;
+    margin:30px auto;
+    color:#aaa;
+    font-size:14px;
+    line-height:1.9;
 }
 
-/* ================= POLICY ================= */
+/* ================= BENEFITS ================= */
 
-.policy-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
+.benefits{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+
+    background:#222;
+    border:1px solid #222;
 }
 
-.policy{
-  background:#0b0b0b;
-  padding:35px;
+.benefit{
+    background:#0b0b0b;
+    padding:38px;
 }
 
-.policy-number{
-  font-size:10px;
-  color:#666;
-  letter-spacing:3px;
+.benefit-number{
+    color:#666;
+    font-size:10px;
+    letter-spacing:3px;
 }
 
-.policy h3{
-  margin:20px 0 10px;
-  font-size:16px;
+.benefit h3{
+    margin:18px 0 10px;
+    font-size:16px;
 }
 
-.policy p{
-  color:#777;
-  font-size:12px;
-  line-height:1.8;
+.benefit p{
+    color:#777;
+    font-size:12px;
+    line-height:1.8;
 }
 
 /* ================= NEWSLETTER ================= */
 
 .newsletter{
-  text-align:center;
-  padding:110px 7%;
-  border-top:1px solid var(--line);
+    padding:100px 7%;
+    text-align:center;
+
+    border-top:1px solid #222;
 }
 
 .newsletter h2{
-  font-family:"Playfair Display",serif;
-  font-size:55px;
-  font-weight:500;
+    font-family:"Playfair Display",serif;
+    font-size:55px;
+    font-weight:500;
 }
 
 .newsletter p{
-  color:#777;
-  margin:15px auto 30px;
-  font-size:13px;
+    color:#777;
+    font-size:13px;
+    margin:15px 0 30px;
 }
 
 .newsletter-form{
-  max-width:500px;
-  margin:auto;
-  display:flex;
-  border-bottom:1px solid #555;
+    max-width:500px;
+    margin:auto;
+
+    display:flex;
+
+    border-bottom:1px solid #555;
 }
 
 .newsletter-form input{
-  flex:1;
-  background:none;
-  border:0;
-  outline:0;
-  color:white;
-  padding:15px 5px;
+    flex:1;
+
+    padding:15px 5px;
+
+    border:0;
+    outline:0;
+
+    background:transparent;
+    color:#fff;
 }
 
 .newsletter-form button{
-  border:0;
-  background:none;
-  color:white;
-  font-size:10px;
-  letter-spacing:2px;
+    border:0;
+    background:transparent;
+    color:#fff;
+
+    font-size:10px;
+    letter-spacing:2px;
 }
 
 /* ================= FOOTER ================= */
 
 .footer{
-  padding:75px 7% 30px;
-  border-top:1px solid var(--line);
+    padding:70px 7% 25px;
+    border-top:1px solid #222;
 }
 
 .footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:50px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:45px;
 }
 
-.footer-brand p{
-  max-width:290px;
-  color:#666;
-  font-size:12px;
-  line-height:1.8;
-  margin-top:18px;
+.footer-description{
+    max-width:290px;
+    margin-top:18px;
+
+    color:#666;
+    font-size:12px;
+    line-height:1.8;
 }
 
 .footer-title{
-  color:#666;
-  font-size:9px;
-  letter-spacing:3px;
-  margin-bottom:20px;
+    margin-bottom:20px;
+
+    color:#666;
+    font-size:9px;
+    letter-spacing:3px;
 }
 
-.footer a{
-  display:block;
-  color:#999;
-  font-size:12px;
-  margin-bottom:13px;
-  transition:.2s;
+.footer-links a{
+    display:block;
+
+    margin-bottom:13px;
+
+    color:#999;
+    font-size:12px;
+
+    transition:.2s;
 }
 
-.footer a:hover{
-  color:white;
-  transform:translateX(4px);
+.footer-links a:hover{
+    color:#fff;
+    transform:translateX(4px);
 }
 
 .footer-bottom{
-  margin-top:65px;
-  padding-top:22px;
-  border-top:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  color:#555;
-  font-size:9px;
-  letter-spacing:1px;
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:60px;
+    padding-top:22px;
+
+    border-top:1px solid #222;
+
+    color:#555;
+    font-size:9px;
+    letter-spacing:1px;
 }
 
 /* ================= CART ================= */
 
 .cart-overlay{
-  position:fixed;
-  inset:0;
-  z-index:9000;
-  background:rgba(0,0,0,.7);
-  opacity:0;
-  visibility:hidden;
-  transition:.3s;
+    position:fixed;
+    inset:0;
+    z-index:2000;
+
+    background:rgba(0,0,0,.75);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
 }
 
 .cart-overlay.active{
-  opacity:1;
-  visibility:visible;
+    opacity:1;
+    visibility:visible;
 }
 
 .cart{
-  position:fixed;
-  right:0;
-  top:0;
-  height:100%;
-  width:min(440px,100%);
-  z-index:10000;
-  background:#0d0d0d;
-  border-left:1px solid #222;
-  transform:translateX(100%);
-  transition:.4s;
-  display:flex;
-  flex-direction:column;
+    position:fixed;
+    top:0;
+    right:0;
+
+    width:min(430px,100%);
+    height:100%;
+
+    z-index:3000;
+
+    background:#0d0d0d;
+    border-left:1px solid #222;
+
+    transform:translateX(100%);
+    transition:.35s;
+
+    display:flex;
+    flex-direction:column;
 }
 
 .cart.active{
-  transform:translateX(0);
+    transform:translateX(0);
 }
 
-.cart-head{
-  padding:25px;
-  border-bottom:1px solid #222;
-  display:flex;
-  justify-content:space-between;
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+
+    padding:25px;
+
+    border-bottom:1px solid #222;
 }
 
-.cart-head h3{
-  font-size:14px;
-  letter-spacing:2px;
+.cart-header h3{
+    font-size:13px;
+    letter-spacing:2px;
 }
 
-.close{
-  border:0;
-  background:none;
-  color:white;
-  font-size:22px;
+.close-cart{
+    border:0;
+    background:none;
+    color:#fff;
+    font-size:22px;
 }
 
 .cart-items{
-  flex:1;
-  overflow:auto;
-  padding:20px;
+    flex:1;
+    overflow:auto;
+    padding:20px;
 }
 
-.empty{
-  color:#666;
-  text-align:center;
-  margin-top:100px;
-  font-size:13px;
+.empty-cart{
+    margin-top:100px;
+
+    text-align:center;
+
+    color:#666;
+    font-size:13px;
 }
 
 .cart-item{
-  display:grid;
-  grid-template-columns:75px 1fr auto;
-  gap:14px;
-  padding:15px 0;
-  border-bottom:1px solid #222;
+    display:grid;
+    grid-template-columns:70px 1fr auto;
+    gap:14px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #222;
 }
 
 .cart-item img{
-  width:75px;
-  height:90px;
-  object-fit:cover;
+    width:70px;
+    height:85px;
+    object-fit:cover;
 }
 
 .cart-item-name{
-  font-size:12px;
+    font-size:12px;
 }
 
 .cart-item-price{
-  color:#aaa;
-  font-size:11px;
-  margin-top:7px;
+    margin-top:7px;
+    color:#888;
+    font-size:11px;
 }
 
-.remove{
-  border:0;
-  background:none;
-  color:#777;
-  font-size:11px;
+.remove-item{
+    border:0;
+    background:none;
+    color:#777;
+    font-size:9px;
 }
 
 .cart-bottom{
-  padding:20px;
-  border-top:1px solid #222;
+    padding:20px;
+    border-top:1px solid #222;
 }
 
-.total-row{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:18px;
-  font-size:13px;
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+    font-size:13px;
 }
 
-.payment-note{
-  color:#666;
-  font-size:10px;
-  line-height:1.6;
-  margin-bottom:15px;
+.payment-message{
+    margin-bottom:15px;
+
+    color:#666;
+    font-size:10px;
+    line-height:1.6;
 }
 
-.checkout{
-  width:100%;
-  border:0;
-  padding:16px;
-  background:white;
-  color:black;
-  font-size:10px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
+.payment-button{
+    width:100%;
 
-/* ================= MODAL ================= */
+    padding:16px;
 
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:11000;
-  background:rgba(0,0,0,.8);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  opacity:0;
-  visibility:hidden;
-  transition:.3s;
-}
+    border:0;
 
-.modal.active{
-  opacity:1;
-  visibility:visible;
-}
+    background:#fff;
+    color:#000;
 
-.modal-box{
-  width:min(520px,100%);
-  background:#111;
-  border:1px solid #292929;
-  padding:30px;
-  position:relative;
-}
-
-.modal-box h3{
-  font-family:"Playfair Display",serif;
-  font-size:38px;
-  font-weight:500;
-  margin-bottom:10px;
-}
-
-.modal-box p{
-  color:#777;
-  font-size:12px;
-  line-height:1.8;
-}
-
-.modal-close{
-  position:absolute;
-  right:20px;
-  top:18px;
-  border:0;
-  background:none;
-  color:white;
-  font-size:22px;
+    font-size:10px;
+    letter-spacing:2px;
 }
 
 /* ================= MOBILE ================= */
 
 @media(max-width:900px){
 
-  .nav-links{
-    position:fixed;
-    left:0;
-    right:0;
-    top:82px;
-    padding:30px 7%;
-    background:#080808;
-    flex-direction:column;
-    gap:25px;
-    transform:translateY(-150%);
-    transition:.4s;
-    border-bottom:1px solid #222;
-  }
+    .nav-links{
+        position:fixed;
+        top:80px;
+        left:0;
+        width:100%;
 
-  .nav-links.active{
-    transform:translateY(0);
-  }
+        padding:30px 7%;
 
-  .menu{
-    display:block;
-  }
+        background:#080808;
 
-  .nav-actions{
-    margin-left:auto;
-    margin-right:18px;
-  }
+        flex-direction:column;
+        gap:24px;
 
-  .hero{
-    min-height:780px;
-  }
+        transform:translateY(-150%);
 
-  .hero h1{
-    font-size:70px;
-  }
+        transition:.35s;
 
-  .section{
-    padding:85px 6%;
-  }
+        border-bottom:1px solid #222;
+    }
 
-  .heading{
-    display:block;
-  }
+    .nav-links.active{
+        transform:translateY(0);
+    }
 
-  .heading-copy{
-    margin-top:20px;
-  }
+    .menu-button{
+        display:block;
+    }
 
-  .products{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
 
-  .product-image{
-    height:350px;
-  }
+    .product-image{
+        height:360px;
+    }
 
-  .quick-add{
-    display:none;
-  }
+    .add-button{
+        display:none;
+    }
 
-  .categories{
-    grid-template-columns:1fr;
-  }
+    .categories{
+        grid-template-columns:1fr;
+    }
 
-  .category{
-    height:520px;
-  }
+    .category{
+        height:520px;
+    }
 
-  .lookbook{
-    grid-template-columns:1fr;
-  }
+    .lookbook{
+        grid-template-columns:1fr;
+    }
 
-  .look:first-child{
-    grid-row:auto;
-  }
+    .look:first-child{
+        grid-row:auto;
+    }
 
-  .look:first-child img,
-  .look:not(:first-child) img{
-    height:550px;
-  }
+    .look:first-child img,
+    .look:not(:first-child) img{
+        height:550px;
+    }
 
-  .policy-grid{
-    grid-template-columns:1fr;
-  }
+    .benefits{
+        grid-template-columns:1fr;
+    }
 
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-  }
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
 
-  .footer-brand{
-    grid-column:span 2;
-  }
+    .footer-brand{
+        grid-column:span 2;
+    }
 }
 
-@media(max-width:520px){
+@media(max-width:550px){
 
-  .logo{
-    font-size:18px;
-    letter-spacing:5px;
-  }
+    .logo{
+        font-size:19px;
+        letter-spacing:5px;
+    }
 
-  .nav-actions{
-    gap:12px;
-  }
+    .nav-right{
+        gap:10px;
+    }
 
-  .hero h1{
-    font-size:58px;
-    letter-spacing:-3px;
-  }
+    .hero{
+        min-height:760px;
+    }
 
-  .hero-copy{
-    font-size:12px;
-  }
+    .hero h1{
+        font-size:59px;
+        letter-spacing:-3px;
+    }
 
-  .buttons{
-    flex-direction:column;
-    max-width:230px;
-  }
+    .hero-text{
+        font-size:12px;
+    }
 
-  .products{
-    grid-template-columns:1fr 1fr;
-  }
+    .hero-buttons{
+        flex-direction:column;
+        max-width:230px;
+    }
 
-  .product-image{
-    height:285px;
-  }
+    .section{
+        padding:80px 6%;
+    }
 
-  .product-info{
-    display:block;
-  }
+    .section-head{
+        display:block;
+    }
 
-  .product-price{
-    margin-top:8px;
-  }
+    .section-description{
+        margin-top:20px;
+    }
 
-  .feature{
-    min-height:650px;
-    padding:80px 7%;
-  }
+    .products{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
 
-  .newsletter h2{
-    font-size:42px;
-  }
+    .product-image{
+        height:290px;
+    }
 
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
+    .product-info{
+        display:block;
+    }
 
-  .footer-brand{
-    grid-column:auto;
-  }
+    .product-price{
+        margin-top:8px;
+    }
 
-  .footer-bottom{
-    display:block;
-    line-height:2;
-  }
+    .newsletter h2{
+        font-size:42px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-brand{
+        grid-column:auto;
+    }
+
+    .footer-bottom{
+        display:block;
+        line-height:2;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-logo">NOXERA</div>
-</div>
+<!-- ================= NAVBAR ================= -->
 
-<!-- NAVIGATION -->
-<header class="nav" id="nav">
+<header class="navbar" id="navbar">
 
-  <a href="#" class="logo">
-    NOXERA<span class="logo-dot">.</span>
-  </a>
+    <a href="#" class="logo">
+        NOXERA<span>.</span>
+    </a>
 
-  <nav>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#shop">Shop</a></li>
-      <li><a href="#collections">Collections</a></li>
-      <li><a href="#lookbook">Lookbook</a></li>
-      <li><a href="#story">Our Story</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <nav>
+        <ul class="nav-links" id="navLinks">
 
-  <div class="nav-actions">
+            <li>
+                <a href="#shop">Shop</a>
+            </li>
 
-    <button class="icon-btn" onclick="openSearch()" aria-label="Search">
-      ⌕
-    </button>
+            <li>
+                <a href="#collections">Collections</a>
+            </li>
 
-    <button class="icon-btn cart-count" onclick="openCart()" aria-label="Cart">
-      ♧
-      <span class="cart-number" id="cartNumber">0</span>
-    </button>
+            <li>
+                <a href="#lookbook">Lookbook</a>
+            </li>
 
-    <button class="menu" id="menuBtn">☰</button>
+            <li>
+                <a href="#story">Our Story</a>
+            </li>
 
-  </div>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div class="nav-right">
+
+        <button class="nav-button" onclick="openCart()">
+            🛒
+        </button>
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
+
+    </div>
 
 </header>
 
-<!-- HERO -->
+
+<!-- ================= HERO ================= -->
+
 <section class="hero">
 
-  <div class="hero-content">
+    <div class="hero-content">
 
-    <div class="kicker">
-      NOXERA — NEW ERA OF STREETWEAR
+        <div class="small-title">
+            NOXERA — NEW ERA OF STREETWEAR
+        </div>
+
+        <h1>
+            BEYOND<br>
+            <span>ORDINARY.</span>
+        </h1>
+
+        <p class="hero-text">
+            Premium streetwear designed for people who
+            create their own direction. Clean silhouettes,
+            powerful details and timeless attitude.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#shop"
+                class="btn btn-white"
+            >
+                Shop Collection
+            </a>
+
+            <a
+                href="#lookbook"
+                class="btn"
+            >
+                Explore Lookbook
+            </a>
+
+        </div>
+
     </div>
 
-    <h1>
-      BEYOND<br>
-      <span>ORDINARY.</span>
-    </h1>
-
-    <p class="hero-copy">
-      Premium essentials for people who create their own direction.
-      Clean silhouettes. Dark aesthetics. Zero compromise.
-    </p>
-
-    <div class="buttons">
-      <a class="btn light" href="#shop">Shop Collection</a>
-      <a class="btn" href="#lookbook">Explore Lookbook</a>
+    <div class="hero-scroll">
+        SCROLL TO DISCOVER ↓
     </div>
-
-  </div>
-
-  <div class="hero-side">
-    SCROLL TO DISCOVER ↓
-  </div>
 
 </section>
 
-<!-- MARQUEE -->
+
+<!-- ================= MARQUEE ================= -->
+
 <div class="marquee">
-  <div class="marquee-track">
-    <span>NOXERA</span>
-    <span>NEW ERA</span>
-    <span>PREMIUM STREETWEAR</span>
-    <span>NOT MADE TO FIT IN</span>
-    <span>NOXERA</span>
-    <span>NEW ERA</span>
-    <span>PREMIUM STREETWEAR</span>
-    <span>NOT MADE TO FIT IN</span>
-  </div>
-</div>
 
-<!-- SHOP -->
-<section class="section" id="shop">
+    <div class="marquee-content">
 
-  <div class="heading">
+        <span>NOXERA</span>
+        <span>NEW ERA</span>
+        <span>PREMIUM STREETWEAR</span>
+        <span>NOT MADE TO FIT IN</span>
 
-    <div>
-      <div class="label">01 — Latest Drop</div>
-      <h2 class="title">The Collection</h2>
+        <span>NOXERA</span>
+        <span>NEW ERA</span>
+        <span>PREMIUM STREETWEAR</span>
+        <span>NOT MADE TO FIT IN</span>
+
     </div>
 
-    <p class="heading-copy">
-      Designed around modern silhouettes and everyday confidence.
-      Discover the first NOXERA essentials.
+</div>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="section" id="shop">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="section-number">
+                01 — LATEST DROP
+            </div>
+
+            <h2 class="section-title">
+                The Collection
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Carefully selected pieces built around
+            confidence, simplicity and modern street culture.
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <article class="product">
+
+            <div class="product-image">
+
+                <div class="product-label">
+                    NEW
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90"
+                    alt="NOXERA Essential Oversized Tee"
+                >
+
+                <button
+                    class="add-button"
+                    onclick="addToCart(1)"
+                >
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <div class="product-name">
+                        Essential Oversized Tee
+                    </div>
+
+                    <div class="product-category">
+                        NOXERA / CORE
+                    </div>
+
+                </div>
+
+                <div class="product-price">
+                    ₹899
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article class="product">
+
+            <div class="product-image">
+
+                <div class="product-label">
+                    DROP 01
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=90"
+                    alt="NOXERA Urban Tee"
+                >
+
+                <button
+                    class="add-button"
+                    onclick="addToCart(2)"
+                >
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <div class="product-name">
+                        Urban Statement Tee
+                    </div>
+
+                    <div class="product-category">
+                        NOXERA / URBAN
+                    </div>
+
+                </div>
+
+                <div class="product-price">
+                    ₹999
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article class="product">
+
+            <div class="product-image">
+
+                <div class="product-label">
+                    LIMITED
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=90"
+                    alt="NOXERA Noir Overshirt"
+                >
+
+                <button
+                    class="add-button"
+                    onclick="addToCart(3)"
+                >
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <div class="product-name">
+                        Noir Overshirt
+                    </div>
+
+                    <div class="product-category">
+                        NOXERA / NOIR
+                    </div>
+
+                </div>
+
+                <div class="product-price">
+                    ₹1,499
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+
+        <article class="product">
+
+            <div class="product-image">
+
+                <div class="product-label">
+                    BESTSELLER
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90"
+                    alt="NOXERA Shadow Essential"
+                >
+
+                <button
+                    class="add-button"
+                    onclick="addToCart(4)"
+                >
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <div class="product-info">
+
+                <div>
+
+                    <div class="product-name">
+                        Shadow Essential
+                    </div>
+
+                    <div class="product-category">
+                        NOXERA / BLACK
+                    </div>
+
+                </div>
+
+                <div class="product-price">
+                    ₹1,099
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURE ================= -->
+
+<section class="feature">
+
+    <div class="feature-content">
+
+        <div class="section-number">
+            02 — THE PHILOSOPHY
+        </div>
+
+        <h2>
+            WEAR<br>
+            YOUR<br>
+            <span>UNKNOWN.</span>
+        </h2>
+
+        <p>
+            NOXERA was created for a generation that refuses
+            to be defined by ordinary rules. Modern silhouettes,
+            dark aesthetics and confident details come together
+            to create something different.
+        </p>
+
+        <a
+            href="#story"
+            class="btn"
+        >
+            Discover NOXERA
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COLLECTIONS ================= -->
+
+<section class="section" id="collections">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="section-number">
+                03 — CATEGORIES
+            </div>
+
+            <h2 class="section-title">
+                Choose Your Era
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="categories">
+
+        <a href="#shop" class="category">
+
+            <img
+                src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1500&q=90"
+                alt="Oversized Collection"
+            >
+
+            <div class="category-content">
+
+                <small>
+                    01 / COLLECTION
+                </small>
+
+                <h3>
+                    Oversized
+                </h3>
+
+            </div>
+
+        </a>
+
+
+        <a href="#shop" class="category">
+
+            <img
+                src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1200&q=90"
+                alt="Essentials Collection"
+            >
+
+            <div class="category-content">
+
+                <small>
+                    02 / COLLECTION
+                </small>
+
+                <h3>
+                    Essentials
+                </h3>
+
+            </div>
+
+        </a>
+
+
+        <a href="#shop" class="category">
+
+            <img
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=90"
+                alt="Street Collection"
+            >
+
+            <div class="category-content">
+
+                <small>
+                    03 / COLLECTION
+                </small>
+
+                <h3>
+                    Street
+                </h3>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LOOKBOOK ================= -->
+
+<section class="section" id="lookbook">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="section-number">
+                04 — VISUAL JOURNAL
+            </div>
+
+            <h2 class="section-title">
+                Lookbook
+            </h2>
+
+        </div>
+
+        <p class="section-description">
+            Style isn't about being seen.
+            It's about being remembered.
+        </p>
+
+    </div>
+
+
+    <div class="lookbook">
+
+        <div class="look">
+
+            <img
+                src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=90"
+                alt="NOXERA Dark Edit"
+            >
+
+            <div class="look-text">
+                THE DARK EDIT
+            </div>
+
+        </div>
+
+
+        <div class="look">
+
+            <img
+                src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1300&q=90"
+                alt="NOXERA After Dark"
+            >
+
+            <div class="look-text">
+                AFTER DARK
+            </div>
+
+        </div>
+
+
+        <div class="look">
+
+            <img
+                src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=1300&q=90"
+                alt="NOXERA Street"
+            >
+
+            <div class="look-text">
+                NO RULES
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STORY ================= -->
+
+<section class="story" id="story">
+
+    <div class="story-content">
+
+        <div class="section-number">
+            05 — NOXERA
+        </div>
+
+        <h2>
+            NOT MADE<br>
+            TO FIT IN.
+        </h2>
+
+        <p>
+            A new generation deserves a new language of style.
+            NOXERA combines understated design with bold attitude
+            to create pieces that move with you.
+        </p>
+
+        <a
+            href="#shop"
+            class="btn btn-white"
+        >
+            Enter The Collection
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BENEFITS ================= -->
+
+<section class="section">
+
+    <div class="section-head">
+
+        <div>
+
+            <div class="section-number">
+                06 — NOXERA EXPERIENCE
+            </div>
+
+            <h2 class="section-title">
+                Made Simple.
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="benefits">
+
+        <div class="benefit">
+
+            <div class="benefit-number">
+                01
+            </div>
+
+            <h3>
+                Secure Online Payment
+            </h3>
+
+            <p>
+                COD is not available. Online payment will be
+                enabled through our secure payment gateway.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <div class="benefit-number">
+                02
+            </div>
+
+            <h3>
+                Returns & Exchange
+            </h3>
+
+            <p>
+                Eligible products can be returned or exchanged
+                according to the final NOXERA return policy.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <div class="benefit-number">
+                03
+            </div>
+
+            <h3>
+                Customer Support
+            </h3>
+
+            <p>
+                Need help with your order? Contact NOXERA
+                through WhatsApp or email.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+    <div class="section-number">
+        07 — THE INNER CIRCLE
+    </div>
+
+    <h2>
+        Enter The Unknown.
+    </h2>
+
+    <p>
+        Get notified about new drops and limited releases.
     </p>
 
-  </div>
+    <form
+        class="newsletter-form"
+        onsubmit="subscribe(event)"
+    >
 
-  <div class="products">
-
-    <!-- PRODUCT 1 -->
-    <article class="product">
-
-      <div class="product-image">
-
-        <span class="badge">NEW</span>
-
-        <img
-          src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90"
-          alt="NOXERA Essential Tee"
+        <input
+            type="email"
+            placeholder="Your email address"
+            required
         >
 
-        <button
-          class="quick-add"
-          onclick="addToCart(1)"
-        >
-          Add To Cart
+        <button type="submit">
+            JOIN →
         </button>
 
-      </div>
+    </form>
 
-      <div class="product-info">
+</section>
 
-        <div>
-          <div class="product-name">
-            Essential Oversized Tee
-          </div>
 
-          <div class="product-sub">
-            NOXERA / CORE
-          </div>
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer" id="contact">
+
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+                NOXERA<span>.</span>
+            </div>
+
+            <p class="footer-description">
+                Premium streetwear for a generation
+                that chooses its own direction.
+            </p>
+
         </div>
 
-        <div class="product-price">
-          ₹899
+
+        <div class="footer-links">
+
+            <div class="footer-title">
+                SHOP
+            </div>
+
+            <a href="#shop">
+                New Arrivals
+            </a>
+
+            <a href="#shop">
+                Best Sellers
+            </a>
+
+            <a href="#collections">
+                Collections
+            </a>
+
         </div>
 
-      </div>
 
-    </article>
+        <div class="footer-links">
 
-    <!-- PRODUCT 2 -->
-    <article class="product">
+            <div class="footer-title">
+                EXPLORE
+            </div>
 
-      <div class="product-image">
+            <a href="#story">
+                Our Story
+            </a>
 
-        <span class="badge">DROP 01</span>
+            <a href="#lookbook">
+                Lookbook
+            </a>
 
-        <img
-          src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=90"
-          alt="NOXERA Urban Tee"
-        >
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div class="footer-title">
+                CONTACT
+            </div>
+
+            <a href="tel:+918795868347">
+                +91 87958 68347
+            </a>
+
+            <a href="mailto:nikhil.manjari@gmail.com">
+                nikhil.manjari@gmail.com
+            </a>
+
+            <a
+                href="https://wa.me/918795868347"
+                target="_blank"
+            >
+                WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 NOXERA. ALL RIGHTS RESERVED.
+        </span>
+
+        <span>
+            MADE FOR THE YOU.
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()"
+></div>
+
+
+<aside class="cart" id="cart">
+
+    <div class="cart-header">
+
+        <h3>
+            YOUR CART
+        </h3>
 
         <button
-          class="quick-add"
-          onclick="addToCart(2)"
+            class="close-cart"
+            onclick="closeCart()"
         >
-          Add To Cart
+            ×
         </button>
 
-      </div>
+    </div>
 
-      <div class="product-info">
 
-        <div>
-          <div class="product-name">
-            Urban Statement Tee
-          </div>
+    <div
+        class="cart-items"
+        id="cartItems"
+    >
 
-          <div class="product-sub">
-            NOXERA / URBAN
-          </div>
+        <div class="empty-cart">
+            Your cart is empty.
         </div>
 
-        <div class="product-price">
-          ₹999
+    </div>
+
+
+    <div class="cart-bottom">
+
+        <div class="cart-total">
+
+            <span>
+                Subtotal
+            </span>
+
+            <strong id="cartTotal">
+                ₹0
+            </strong>
+
         </div>
 
-      </div>
 
-    </article>
+        <div class="payment-message">
+            COD is unavailable.
+            Online payment will be connected
+            through the payment gateway later.
+        </div>
 
-    <!-- PRODUCT 3 -->
-    <article class="product">
-
-      <div class="product-image">
-
-        <span class="badge">LIMITED</span>
-
-        <img
-          src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=90"
-          alt="NOXERA Noir Overshirt"
-        >
 
         <button
-          class="quick-add"
-          onclick="addToCart(3)"
+            class="payment-button"
+            onclick="paymentComingSoon()"
         >
-          Add To Cart
+            ONLINE PAYMENT — COMING SOON
         </button>
 
-      </div>
+    </div>
 
-      <div class="product-info">
+</aside>
 
-        <div>
-          <div class="product-name">
-            Noir Overshirt
-          </div>
 
-          <div class="product-sub">
-            NOXERA / NOIR
-          </div>
-        </div>
+<!-- ================= JAVASCRIPT ================= -->
 
-        <div class="product-price">
-          ₹1,499
-        </div>
+<script>
 
-      </div>
+/* NAVBAR */
 
-    </article>
+window.addEventListener("scroll",function(){
 
-    <!-- PRODUCT 4 -->
-    <article class="product">
+    const navbar =
+        document.getElementById("navbar");
 
-      <div class="product" div>
-        
+    if(window.scrollY > 50){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+    const nav =
+        document.getElementById("navLinks");
+
+    nav.classList.toggle("active");
+
+}
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        document
+        .getElementById("navLinks")
+        .classList.remove("active");
+
+    });
+
+});
+
+
+/* PRODUCTS */
+
+const products = {
+
+    1:{
+        name:"Essential Oversized Tee",
+        price:899,
+        image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90"
+    },
+
+    2:{
+        name:"Urban Statement Tee",
+        price:999,
+        image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=90"
+    },
+
+    3:{
+        name:"Noir Overshirt",
+        price:1499,
+        image:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=90"
+    },
+
+    4:{
+        name:"Shadow Essential",
+        price:1099,
+        image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90"
+    }
+
+};
+
+
+let cart = [];
+
+
+/* ADD TO CART */
+
+function addToCart(id){
+
+    cart.push(products[id]);
+
+    updateCart();
+
+    openCart();
+
+}
+
+
+/* UPDATE CART */
+
+function updateCart(){
+
+    const container =
+        document.getElementById("cartItems");
+
+    const totalElement =
+        document.getElementById("cartTotal");
+
+
+    if(cart.length === 0){
+
+        container.innerHTML =
+        '<div class="empty-cart">Your cart is empty.</div>';
+
+        totalElement.textContent = "₹0";
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+    container.innerHTML = "";
+
+
+    cart.forEach(function(product,index){
+
+        total += product.price;
+
+
+        container.innerHTML += `
+
+            <div class="cart-item">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                >
+
+                <div>
+
+                    <div class="cart-item-name">
+                        ${product.name}
+                    </div>
+
+                    <div class="cart-item-price">
+                        ₹${product.price.toLocaleString("en-IN")}
+                    </div>
+
+                </div>
+
+                <button
+                    class="remove-item"
+                    onclick="removeItem(${index})"
+                >
+                    REMOVE
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+
+    totalElement.textContent =
+        "₹" + total.toLocaleString("en-IN");
+
+}
+
+
+/* REMOVE ITEM */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+/* OPEN CART */
+
+function openCart(){
+
+    document
+    .getElementById("cart")
+    .classList.add("active");
+
+    document
+    .getElementById("cartOverlay")
+    .classList.add("active");
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart(){
+
+    document
+    .getElementById("cart")
+    .classList.remove("active");
+
+    document
+    .getElementById("cartOverlay")
+    .classList.remove("active");
+
+}
+
+
+/* PAYMENT */
+
+function paymentComingSoon(){
+
+    if(cart.length === 0){
+
+        alert("Your cart is empty.");
+
+        return;
+
+    }
+
+
+    alert(
+        "Online payment is currently being connected to NOXERA. COD is not available."
+    );
+
+}
+
+
+/* NEWSLETTER */
+
+function subscribe(event){
+
+    event.preventDefault();
+
+    alert(
+        "Welcome to NOXERA. You're on the list."
+    );
+
+    event.target.reset();
+
+}
+
+</script>
+
+</body>
+  </html>
