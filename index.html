@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>NOXERA — Premium Indian Streetwear</title>
+<title>NOXERA by Mrigank Sharma — Premium Streetwear</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -17,58 +16,64 @@ a{text-decoration:none;color:inherit}
 button{font-family:inherit;cursor:pointer}
 img{display:block;width:100%}
 
-.navbar{position:fixed;top:0;left:0;width:100%;height:78px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);transition:.3s}
+.navbar{position:fixed;top:0;left:0;width:100%;height:80px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);transition:.3s}
 .navbar.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(15px);border-bottom:1px solid #222}
-.logo{font-size:24px;font-weight:700;letter-spacing:7px}
+.logo{font-size:23px;font-weight:700;letter-spacing:6px}
 .logo span{color:#777}
 .nav-links{display:flex;gap:30px;list-style:none}
-.nav-links a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#ccc}
+.nav-links a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#ccc}
 .nav-right{display:flex;align-items:center;gap:15px}
 .nav-button,.menu-button{background:none;border:0;color:#fff;font-size:20px}
 .menu-button{display:none}
 
-.hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.2)),linear-gradient(0deg,#080808,transparent 60%),url("https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=2200&q=90");background-size:cover;background-position:center}
-.hero-content{padding:0 7% 9%}
+.hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.2)),linear-gradient(0deg,#080808,transparent 60%),url("https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=2200&q=90");background-size:cover;background-position:center}
+.hero-content{width:100%;padding:0 7% 9%}
 .small-title{color:#aaa;font-size:10px;letter-spacing:5px;margin-bottom:20px}
-.hero h1{font-family:"Playfair Display",serif;font-size:clamp(65px,10vw,140px);line-height:.85;font-weight:500;letter-spacing:-5px}
+.hero h1{font-family:"Playfair Display",serif;font-size:clamp(60px,10vw,140px);line-height:.85;font-weight:500;letter-spacing:-5px}
 .hero h1 span{color:#999}
-.hero-text{max-width:470px;color:#aaa;font-size:14px;line-height:1.8;margin-top:28px}
+.hero-name{margin-top:20px;font-size:14px;letter-spacing:3px;color:#fff;text-transform:uppercase}
+.hero-name span{color:#888}
+.hero-text{max-width:470px;color:#aaa;font-size:14px;line-height:1.8;margin-top:20px}
 .hero-buttons{display:flex;gap:12px;margin-top:30px}
-.btn{display:inline-flex;padding:16px 25px;border:1px solid #555;background:transparent;color:#fff;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 25px;border:1px solid #555;background:transparent;color:#fff;font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:.3s}
+.btn:hover{background:#fff;color:#000;border-color:#fff}
 .btn-white{background:#fff;color:#000;border-color:#fff}
 .hero-scroll{position:absolute;right:5%;bottom:8%;writing-mode:vertical-rl;color:#777;font-size:9px;letter-spacing:4px}
 
-.marquee{overflow:hidden;white-space:nowrap;padding:18px 0;border-top:1px solid #222;border-bottom:1px solid #222}
-.marquee-content{display:inline-block;animation:move 25s linear infinite}
+.marquee{overflow:hidden;white-space:nowrap;padding:18px 0;border-top:1px solid #222;border-bottom:1px solid #222;background:#0b0b0b}
+.marquee-content{display:inline-block;animation:moveText 25s linear infinite}
 .marquee span{margin:0 30px;color:#777;font-size:11px;letter-spacing:4px}
-@keyframes move{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes moveText{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 .section{padding:100px 7%}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:45px}
-.section-number{color:#666;font-size:10px;letter-spacing:4px;margin-bottom:12px}
-.section-title{font-family:"Playfair Display",serif;font-size:clamp(45px,6vw,75px);font-weight:500}
+.section-number{color:#666;font-size:10px;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:"Playfair Display",serif;font-size:clamp(45px,6vw,75px);font-weight:500;line-height:1}
 .section-description{max-width:350px;color:#777;font-size:13px;line-height:1.8}
 
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.product-image{height:500px;position:relative;overflow:hidden;background:#111}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product{min-width:0}
+.product-image{position:relative;height:500px;overflow:hidden;background:#111}
 .product-image img{height:100%;object-fit:cover;transition:1s}
-.product:hover img{transform:scale(1.05)}
-.product-label{position:absolute;top:14px;left:14px;z-index:2;background:#fff;color:#000;padding:7px 10px;font-size:8px;letter-spacing:2px}
-.add-button{position:absolute;left:14px;right:14px;bottom:14px;padding:15px;border:0;background:#fff;color:#000;font-size:10px;letter-spacing:2px;text-transform:uppercase}
-.product-info{display:flex;justify-content:space-between;padding:17px 2px 35px}
+.product:hover .product-image img{transform:scale(1.05)}
+.product-label{position:absolute;top:14px;left:14px;z-index:2;padding:7px 10px;background:#fff;color:#000;font-size:8px;letter-spacing:2px}
+.add-button{position:absolute;left:14px;right:14px;bottom:14px;padding:14px;border:0;background:#fff;color:#000;font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:0;transform:translateY(15px);transition:.3s}
+.product:hover .add-button{opacity:1;transform:translateY(0)}
+.product-info{display:flex;justify-content:space-between;gap:10px;padding:17px 2px 30px}
 .product-name{font-size:13px}
 .product-category{margin-top:7px;color:#666;font-size:10px;letter-spacing:1px}
-.product-price{font-size:13px;white-space:nowrap}
+.product-price{white-space:nowrap;font-size:13px}
 
 .feature{min-height:650px;display:flex;align-items:center;padding:100px 7%;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.15)),url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=2200&q=90");background-size:cover;background-position:center}
 .feature-content{max-width:620px}
-.feature h2,.story h2{font-family:"Playfair Display",serif;font-size:clamp(55px,8vw,105px);line-height:.88;font-weight:500}
+.feature h2,.story h2{font-family:"Playfair Display",serif;font-size:clamp(55px,8vw,105px);line-height:.87;font-weight:500}
 .feature h2 span,.story h2 span{color:#999}
 .feature p,.story p{max-width:500px;color:#aaa;font-size:14px;line-height:1.8;margin:30px 0}
 
 .categories{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px}
 .category{height:550px;position:relative;overflow:hidden}
-.category img{height:100%;object-fit:cover;filter:brightness(.65)}
+.category img{height:100%;object-fit:cover;filter:brightness(.65);transition:1s}
+.category:hover img{transform:scale(1.05);filter:brightness(.9)}
 .category:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.9))}
 .category-content{position:absolute;left:25px;bottom:25px;z-index:2}
 .category-content small{color:#aaa;font-size:9px;letter-spacing:3px}
@@ -77,53 +82,59 @@ img{display:block;width:100%}
 .lookbook{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .look{position:relative;overflow:hidden}
 .look:first-child{grid-row:span 2}
-.look img{width:100%;height:400px;object-fit:cover}
-.look:first-child img{height:816px}
-.look-text{position:absolute;left:25px;bottom:25px;font-family:"Playfair Display",serif;font-size:28px}
+.look img{height:407px;object-fit:cover;transition:1s}
+.look:first-child img{height:830px}
+.look:hover img{transform:scale(1.04)}
+.look-text{position:absolute;left:25px;bottom:25px;font-family:"Playfair Display",serif;font-size:28px;z-index:2}
 
-.story{min-height:620px;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 7%;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.9)),url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=90");background-size:cover;background-position:center}
+.story{min-height:650px;display:flex;align-items:center;justify-content:center;padding:100px 7%;text-align:center;background:linear-gradient(rgba(0,0,0,.76),rgba(0,0,0,.9)),url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=90");background-size:cover;background-position:center}
+.story-content{max-width:850px}
 .story p{margin:30px auto}
 
-.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#222}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#222;border:1px solid #222}
 .benefit{background:#0b0b0b;padding:38px}
 .benefit-number{color:#666;font-size:10px;letter-spacing:3px}
-.benefit h3{margin:17px 0 10px}
+.benefit h3{margin:18px 0 10px;font-size:16px}
 .benefit p{color:#777;font-size:12px;line-height:1.8}
 
-.footer{padding:70px 7% 25px;border-top:1px solid #222}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
-.footer-description{max-width:290px;color:#666;font-size:12px;line-height:1.8;margin-top:18px}
-.footer-title{color:#666;font-size:9px;letter-spacing:3px;margin-bottom:20px}
-.footer-links a{display:block;color:#999;font-size:12px;margin-bottom:13px}
-.footer-bottom{display:flex;justify-content:space-between;border-top:1px solid #222;margin-top:55px;padding-top:20px;color:#555;font-size:9px}
+.newsletter{padding:90px 7%;text-align:center;border-top:1px solid #222}
+.newsletter h2{font-family:"Playfair Display",serif;font-size:55px;font-weight:500}
+.newsletter p{color:#777;font-size:13px;margin:15px 0 30px}
 
-.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000;opacity:0;visibility:hidden;transition:.3s}
+.footer{padding:70px 7% 25px;border-top:1px solid #222}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:45px}
+.footer-description{max-width:290px;margin-top:18px;color:#666;font-size:12px;line-height:1.8}
+.footer-title{margin-bottom:20px;color:#666;font-size:9px;letter-spacing:3px}
+.footer-links a{display:block;margin-bottom:13px;color:#999;font-size:12px}
+.footer-bottom{display:flex;justify-content:space-between;margin-top:60px;padding-top:22px;border-top:1px solid #222;color:#555;font-size:9px;letter-spacing:1px}
+
+.cart-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.75);opacity:0;visibility:hidden;transition:.3s}
 .cart-overlay.active{opacity:1;visibility:visible}
-.cart{position:fixed;top:0;right:0;width:min(450px,100%);height:100%;z-index:3000;background:#0d0d0d;border-left:1px solid #222;transform:translateX(100%);transition:.35s;display:flex;flex-direction:column}
+.cart{position:fixed;top:0;right:0;width:min(440px,100%);height:100%;z-index:3000;background:#0d0d0d;border-left:1px solid #222;transform:translateX(100%);transition:.35s;display:flex;flex-direction:column}
 .cart.active{transform:translateX(0)}
-.cart-header{display:flex;justify-content:space-between;padding:24px;border-bottom:1px solid #222}
+.cart-header{display:flex;justify-content:space-between;padding:25px;border-bottom:1px solid #222}
 .cart-header h3{font-size:13px;letter-spacing:2px}
-.close-cart{background:none;border:0;color:#fff;font-size:24px}
+.close-cart{border:0;background:none;color:#fff;font-size:24px}
 .cart-items{flex:1;overflow:auto;padding:20px}
-.empty-cart{text-align:center;color:#666;margin-top:100px}
-.cart-item{padding:18px 0;border-bottom:1px solid #222}
-.cart-main{display:grid;grid-template-columns:70px 1fr;gap:14px}
-.cart-main img{width:70px;height:85px;object-fit:cover}
-.cart-name{font-size:12px}
-.cart-price{color:#888;font-size:11px;margin-top:7px}
-.cart-meta{color:#777;font-size:10px;margin-top:6px}
-.cart-controls{display:flex;align-items:center;gap:10px;margin-top:13px}
+.empty-cart{margin-top:100px;text-align:center;color:#666;font-size:13px}
+.cart-item{padding:15px 0;border-bottom:1px solid #222}
+.cart-top{display:grid;grid-template-columns:70px 1fr;gap:14px}
+.cart-top img{width:70px;height:85px;object-fit:cover}
+.cart-item-name{font-size:12px}
+.cart-item-price{margin-top:7px;color:#888;font-size:11px}
+.cart-size{margin-top:6px;color:#777;font-size:10px}
+.cart-controls{display:flex;align-items:center;gap:9px;margin-top:13px}
 .qty-btn{width:28px;height:28px;border:1px solid #444;background:#111;color:#fff}
 .qty-number{min-width:20px;text-align:center;font-size:12px}
-.remove-item{margin-left:auto;background:none;border:0;color:#777;font-size:9px;letter-spacing:1px}
+.remove-item{margin-left:auto;border:0;background:none;color:#777;font-size:9px;letter-spacing:1px}
 .cart-bottom{padding:20px;border-top:1px solid #222}
-.cart-total{display:flex;justify-content:space-between;margin-bottom:14px}
-.cart-note{color:#666;font-size:10px;line-height:1.6;margin-bottom:15px}
-.payment-button{width:100%;padding:17px;border:0;background:#fff;color:#000;font-size:10px;letter-spacing:2px}
+.cart-total{display:flex;justify-content:space-between;margin-bottom:15px;font-size:13px}
+.payment-message{margin-bottom:15px;color:#666;font-size:10px;line-height:1.6}
+.payment-button{width:100%;padding:16px;border:0;background:#fff;color:#000;font-size:10px;letter-spacing:2px}
 
-.size-box{position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:20px}
-.size-box.active{display:flex}
-.size-card{width:min(400px,100%);background:#111;border:1px solid #333;padding:28px}
+.size-modal{position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:20px}
+.size-modal.active{display:flex}
+.size-card{width:min(390px,100%);background:#111;border:1px solid #333;padding:28px}
 .size-card h3{font-family:"Playfair Display",serif;font-size:28px;font-weight:500}
 .size-card p{color:#777;font-size:12px;margin:8px 0 25px}
 .sizes{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
@@ -132,32 +143,37 @@ img{display:block;width:100%}
 .cancel-size{width:100%;margin-top:18px;padding:13px;background:none;border:1px solid #444;color:#aaa}
 
 @media(max-width:900px){
-.nav-links{position:fixed;top:78px;left:0;width:100%;background:#080808;padding:30px 7%;display:flex;flex-direction:column;gap:22px;transform:translateY(-150%);transition:.3s;border-bottom:1px solid #222}
+.nav-links{position:fixed;top:80px;left:0;width:100%;padding:30px 7%;background:#080808;flex-direction:column;gap:24px;transform:translateY(-150%);transition:.35s;border-bottom:1px solid #222}
 .nav-links.active{transform:translateY(0)}
 .menu-button{display:block}
 .products{grid-template-columns:1fr 1fr}
-.product-image{height:370px}
+.product-image{height:360px}
+.add-button{opacity:1;transform:none}
 .categories{grid-template-columns:1fr}
+.category{height:520px}
+.lookbook{grid-template-columns:1fr}
+.look:first-child{grid-row:auto}
+.look:first-child img,.look:not(:first-child) img{height:550px}
 .benefits{grid-template-columns:1fr}
 .footer-grid{grid-template-columns:1fr 1fr}
 .footer-brand{grid-column:span 2}
 }
 
 @media(max-width:550px){
-.logo{font-size:19px;letter-spacing:5px}
+.logo{font-size:18px;letter-spacing:4px}
+.nav-right{gap:9px}
 .hero{min-height:760px}
-.hero h1{font-size:58px}
+.hero h1{font-size:58px;letter-spacing:-3px}
+.hero-text{font-size:12px}
 .hero-buttons{flex-direction:column;max-width:230px}
 .section{padding:75px 6%}
 .section-head{display:block}
-.section-description{margin-top:18px}
+.section-description{margin-top:20px}
 .products{grid-template-columns:1fr 1fr;gap:10px}
 .product-image{height:290px}
 .product-info{display:block}
 .product-price{margin-top:8px}
-.lookbook{grid-template-columns:1fr}
-.look:first-child{grid-row:auto}
-.look:first-child img,.look img{height:520px}
+.newsletter h2{font-size:42px}
 .footer-grid{grid-template-columns:1fr}
 .footer-brand{grid-column:auto}
 .footer-bottom{display:block;line-height:2}
@@ -186,9 +202,10 @@ img{display:block;width:100%}
 
 <section class="hero">
 <div class="hero-content">
-<div class="small-title">NOXERA — INDIAN STREETWEAR</div>
+<div class="small-title">NOXERA — NEW ERA OF STREETWEAR</div>
 <h1>BEYOND<br><span>ORDINARY.</span></h1>
-<p class="hero-text">Premium streetwear inspired by India's new generation. Clean silhouettes, bold attitude and everyday confidence.</p>
+<div class="hero-name">NOXERA by <span>Mrigank Sharma</span></div>
+<p class="hero-text">Premium Indian streetwear designed for people who create their own direction. Clean silhouettes, powerful details and timeless attitude.</p>
 <div class="hero-buttons">
 <a href="#shop" class="btn btn-white">Shop Collection</a>
 <a href="#lookbook" class="btn">Explore Lookbook</a>
@@ -199,8 +216,8 @@ img{display:block;width:100%}
 
 <div class="marquee">
 <div class="marquee-content">
-<span>NOXERA</span><span>INDIA</span><span>PREMIUM STREETWEAR</span><span>NOT MADE TO FIT IN</span>
-<span>NOXERA</span><span>INDIA</span><span>PREMIUM STREETWEAR</span><span>NOT MADE TO FIT IN</span>
+<span>NOXERA</span><span>MRIGANK SHARMA</span><span>PREMIUM STREETWEAR</span><span>MADE FOR INDIA</span>
+<span>NOXERA</span><span>MRIGANK SHARMA</span><span>PREMIUM STREETWEAR</span><span>MADE FOR INDIA</span>
 </div>
 </div>
 
@@ -210,7 +227,7 @@ img{display:block;width:100%}
 <div class="section-number">01 — LATEST DROP</div>
 <h2 class="section-title">The Collection</h2>
 </div>
-<p class="section-description">Indian-inspired streetwear built for the new generation. Every tee is ₹999 or below.</p>
+<p class="section-description">Premium Indian streetwear with every T-shirt priced under ₹1000.</p>
 </div>
 
 <div class="products">
@@ -218,73 +235,37 @@ img{display:block;width:100%}
 <article class="product">
 <div class="product-image">
 <div class="product-label">NEW</div>
-<img src="https://ahankarwear.com/cdn/shop/files/DSC_0969.jpg?v=1765704200&width=1200" alt="Desi Core Oversized Tee">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90" alt="Essential Oversized Tee">
 <button class="add-button" onclick="chooseSize(1)">ADD TO CART</button>
 </div>
-<div class="product-info">
-<div><div class="product-name">Desi Core Oversized Tee</div><div class="product-category">NOXERA / CORE</div></div>
-<div class="product-price">₹899</div>
-</div>
+<div class="product-info"><div><div class="product-name">Essential Oversized Tee</div><div class="product-category">NOXERA / CORE</div></div><div class="product-price">₹899</div></div>
 </article>
 
 <article class="product">
 <div class="product-image">
 <div class="product-label">DROP 01</div>
-<img src="https://www.mydesignation.com/cdn/shop/files/skating-thullal-198072.jpg?v=1716301196&width=940" alt="Urban Culture Tee">
+<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=90" alt="Urban Statement Tee">
 <button class="add-button" onclick="chooseSize(2)">ADD TO CART</button>
 </div>
-<div class="product-info">
-<div><div class="product-name">Urban Culture Tee</div><div class="product-category">NOXERA / CULTURE</div></div>
-<div class="product-price">₹799</div>
-</div>
+<div class="product-info"><div><div class="product-name">Urban Statement Tee</div><div class="product-category">NOXERA / STREET</div></div><div class="product-price">₹799</div></div>
 </article>
 
 <article class="product">
 <div class="product-image">
 <div class="product-label">BESTSELLER</div>
-<img src="https://javinishka.com/cdn/shop/files/UPS07_2.webp?v=1750088120&width=1200" alt="Twin Street Tee">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90" alt="Urban Oversized Tee">
 <button class="add-button" onclick="chooseSize(3)">ADD TO CART</button>
 </div>
-<div class="product-info">
-<div><div class="product-name">Twin Street Tee</div><div class="product-category">NOXERA / UNISEX</div></div>
-<div class="product-price">₹949</div>
-</div>
+<div class="product-info"><div><div class="product-name">Urban Oversized Tee</div><div class="product-category">NOXERA / UNISEX</div></div><div class="product-price">₹949</div></div>
 </article>
 
 <article class="product">
 <div class="product-image">
 <div class="product-label">INDIA EDIT</div>
-<img src="https://barelystylish.com/cdn/shop/files/20250821_1816_UrbanStreetwearConfidence_remix_01k36agwksf56t2a7t40b1z78m.png?v=1755783481&width=900" alt="India Statement Tee">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=90" alt="India Statement Tee">
 <button class="add-button" onclick="chooseSize(4)">ADD TO CART</button>
 </div>
-<div class="product-info">
-<div><div class="product-name">India Statement Tee</div><div class="product-category">NOXERA / INDIA</div></div>
-<div class="product-price">₹999</div>
-</div>
-</article>
-
-<article class="product">
-<div class="product-image">
-<div class="product-label">ESSENTIAL</div>
-<img src="https://thegeloclub.com/cdn/shop/files/models-indian-youth-boys-and-girls-wearing-different-types-of-tshirts-caps-modern-tote-bags.png?v=1762166872&width=1200" alt="City Youth Tee">
-<button class="add-button" onclick="chooseSize(5)">ADD TO CART</button>
-</div>
-<div class="product-info">
-<div><div class="product-name">City Youth Tee</div><div class="product-category">NOXERA / YOUTH</div></div>
-<div class="product-price">₹749</div>
-</div>
-</article>
-
-<article class="product">
-<div class="product-image">
-<div class="product-label">LIMITED</div>
-<img src="https://blog.unleavables.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-07-at-2.41.19-PM-1024x682.jpeg" alt="Gen Z Street Tee">
-<button class="add-button" onclick="chooseSize(6)">ADD TO CART</button>
-</div>
-<div class="product-info">
-<div><div class="product-name">Gen-Z Street Tee</div><div class="product-category">NOXERA / STREET</div></div>
-<div class="product-price">₹899</div>
-</div>
+<div class="product-info"><div><div class="product-name">India Statement Tee</div><div class="product-category">NOXERA / INDIA</div></div><div class="product-price">₹999</div></div>
 </article>
 
 </div>
@@ -294,7 +275,7 @@ img{display:block;width:100%}
 <div class="feature-content">
 <div class="section-number">02 — NOXERA INDIA</div>
 <h2>BUILT FOR<br><span>THE STREETS.</span></h2>
-<p>From Delhi streets to Mumbai nights, NOXERA is made for people who don't follow the crowd. Indian attitude. Modern silhouettes. Everyday streetwear.</p>
+<p>Indian roots. Modern silhouettes. A new generation of streetwear built around individuality and confidence.</p>
 <a href="#shop" class="btn btn-white">SHOP THE DROP</a>
 </div>
 </section>
@@ -305,20 +286,20 @@ img{display:block;width:100%}
 <div class="section-number">03 — COLLECTIONS</div>
 <h2 class="section-title">Choose Your Fit</h2>
 </div>
-<p class="section-description">Streetwear for every mood — minimal, bold and unapologetically Indian.</p>
+<p class="section-description">Minimal, bold and unapologetically modern.</p>
 </div>
 
 <div class="categories">
 <div class="category">
-<img src="https://trivora.in/assets/category-men-Cdsb_BTa.jpg" alt="Men streetwear">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=90" alt="Men Streetwear">
 <div class="category-content"><small>01 — MEN</small><h3>Street Men</h3></div>
 </div>
 <div class="category">
-<img src="https://i.pinimg.com/736x/52/e5/6d/52e56dc42df28ac15d2bf4b16a9873e8.jpg" alt="Women streetwear">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=90" alt="Women Streetwear">
 <div class="category-content"><small>02 — WOMEN</small><h3>Street Women</h3></div>
 </div>
 <div class="category">
-<img src="https://thegeloclub.com/cdn/shop/files/models-indian-youth-boys-and-girls-wearing-different-types-of-tshirts-caps-modern-tote-bags.png?v=1762166872&width=1200" alt="Indian youth fashion">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=90" alt="Youth Streetwear">
 <div class="category-content"><small>03 — UNISEX</small><h3>Everyday</h3></div>
 </div>
 </div>
@@ -330,59 +311,77 @@ img{display:block;width:100%}
 <div class="section-number">04 — LOOKBOOK</div>
 <h2 class="section-title">India / After Dark</h2>
 </div>
-<p class="section-description">A new generation. A new attitude. A new era of Indian streetwear.</p>
+<p class="section-description">A new generation. A new attitude. A new era.</p>
 </div>
 
 <div class="lookbook">
 <div class="look">
-<img src="https://ahankarwear.com/cdn/shop/files/DSC_0969.jpg?v=1765704200&width=1600" alt="Indian streetwear">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=90" alt="Streetwear">
 <div class="look-text">INDIAN ROOTS.</div>
 </div>
 <div class="look">
-<img src="https://www.mydesignation.com/cdn/shop/files/skating-thullal-198072.jpg?v=1716301196&width=1200" alt="Indian street style">
+<img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=90" alt="Street Style">
 <div class="look-text">CITY ENERGY.</div>
 </div>
 <div class="look">
-<img src="https://thegeloclub.com/cdn/shop/files/models-indian-youth-boys-and-girls-wearing-different-types-of-tshirts-caps-modern-tote-bags.png?v=1762166872&width=1600" alt="Indian youth">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=90" alt="Fashion">
 <div class="look-text">NEW GENERATION.</div>
 </div>
 </div>
 </section>
 
 <section class="story" id="story">
-<div>
+<div class="story-content">
 <div class="section-number">05 — OUR STORY</div>
 <h2>WEAR YOUR<br><span>IDENTITY.</span></h2>
-<p>NOXERA is an Indian streetwear concept created around individuality, confidence and modern culture.</p>
+<p>NOXERA by Mrigank Sharma is an Indian streetwear concept built around individuality, confidence and modern culture.</p>
 <a href="#shop" class="btn btn-white">DISCOVER NOXERA</a>
 </div>
 </section>
 
 <section class="section">
 <div class="benefits">
-<div class="benefit"><div class="benefit-number">01</div><h3>Indian Streetwear</h3><p>Designed around modern Indian youth and street culture.</p></div>
-<div class="benefit"><div class="benefit-number">02</div><h3>Affordable Drops</h3><p>All displayed T-shirts are priced at ₹999 or below.</p></div>
-<div class="benefit"><div class="benefit-number">03</div><h3>WhatsApp Ordering</h3><p>Select size and quantity, then send your complete order directly to NOXERA.</p></div>
+<div class="benefit"><div class="benefit-number">01</div><h3>Indian Streetwear</h3><p>Designed for the new generation of Indian street culture.</p></div>
+<div class="benefit"><div class="benefit-number">02</div><h3>Affordable Drops</h3><p>Every T-shirt shown here is priced below ₹1000.</p></div>
+<div class="benefit"><div class="benefit-number">03</div><h3>WhatsApp Ordering</h3><p>Select your size and quantity and send the complete order directly to NOXERA.</p></div>
 </div>
+</section>
+
+<section class="newsletter">
+<h2>JOIN NOXERA.</h2>
+<p>Be part of the new era.</p>
 </section>
 
 <footer class="footer" id="contact">
 <div class="footer-grid">
 <div class="footer-brand">
 <div class="logo">NOXERA<span>.</span></div>
-<p class="footer-description">Premium Indian streetwear for the new generation. Built with attitude. Designed to be different.</p>
+<p class="footer-description">NOXERA by <strong>Mrigank Sharma</strong> — Premium Indian streetwear for the new generation.</p>
 </div>
-<div><div class="footer-title">SHOP</div><div class="footer-links"><a href="#shop">All Products</a><a href="#collections">Collections</a><a href="#lookbook">Lookbook</a></div></div>
-<div><div class="footer-title">INFO</div><div class="footer-links"><a href="#story">Our Story</a><a href="#">Shipping</a><a href="#">Returns</a></div></div>
-<div><div class="footer-title">CONTACT</div><div class="footer-links"><a href="https://wa.me/918795868347" target="_blank">WhatsApp</a></div></div>
+<div>
+<div class="footer-title">SHOP</div>
+<div class="footer-links"><a href="#shop">All Products</a><a href="#collections">Collections</a><a href="#lookbook">Lookbook</a></div>
 </div>
-<div class="footer-bottom"><span>© 2026 NOXERA. ALL RIGHTS RESERVED.</span><span>INDIA / STREETWEAR / NEW ERA</span></div>
+<div>
+<div class="footer-title">INFO</div>
+<div class="footer-links"><a href="#story">Our Story</a><a href="#">Shipping</a><a href="#">Returns</a></div>
+</div>
+<div>
+<div class="footer-title">CONTACT</div>
+<div class="footer-links">
+<a href="https://wa.me/918795868347" target="_blank">WhatsApp</a>
+<a href="https://wa.me/918795868347" target="_blank">+91 8795868347</a>
+<a href="#">Mrigank Sharma</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom"><span>© 2026 NOXERA by Mrigank Sharma.</span><span>INDIA / STREETWEAR / NEW ERA</span></div>
 </footer>
 
-<div class="size-box" id="sizeBox">
+<div class="size-modal" id="sizeModal">
 <div class="size-card">
 <h3>Select Size</h3>
-<p id="sizeProductName">Choose your T-shirt size</p>
+<p id="selectedProductName">Choose your size</p>
 <div class="sizes">
 <button class="size-option" onclick="selectSize('S')">S</button>
 <button class="size-option" onclick="selectSize('M')">M</button>
@@ -401,5 +400,136 @@ img{display:block;width:100%}
 <h3>YOUR CART</h3>
 <button class="close-cart" onclick="closeCart()">×</button>
 </div>
+<div class="cart-items" id="cartItems">
+<div class="empty-cart">Your cart is empty.</div>
+</div>
+<div class="cart-bottom">
+<div class="cart-total"><span>TOTAL</span><strong id="cartTotal">₹0</strong></div>
+<div class="payment-message">Your complete order will be sent to NOXERA on WhatsApp.</div>
+<button class="payment-button" onclick="checkoutWhatsApp()">ORDER ON WHATSAPP</button>
+</div>
+</aside>
 
-<div class="cart
+<script>
+const products=[
+{id:1,name:"Essential Oversized Tee",price:899,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90"},
+{id:2,name:"Urban Statement Tee",price:799,image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=90"},
+{id:3,name:"Urban Oversized Tee",price:949,image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=90"},
+{id:4,name:"India Statement Tee",price:999,image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=90"}
+];
+
+let cart=[];
+let selectedProduct=null;
+
+function chooseSize(id){
+selectedProduct=products.find(p=>p.id===id);
+document.getElementById("selectedProductName").textContent=selectedProduct.name+" — ₹"+selectedProduct.price;
+document.getElementById("sizeModal").classList.add("active");
+}
+
+function selectSize(size){
+if(!selectedProduct)return;
+let existing=cart.find(item=>item.id===selectedProduct.id&&item.size===size);
+if(existing){
+existing.quantity++;
+}else{
+cart.push({id:selectedProduct.id,name:selectedProduct.name,price:selectedProduct.price,image:selectedProduct.image,size:size,quantity:1});
+}
+closeSize();
+renderCart();
+openCart();
+}
+
+function closeSize(){
+document.getElementById("sizeModal").classList.remove("active");
+selectedProduct=null;
+}
+
+function changeQuantity(index,value){
+cart[index].quantity+=value;
+if(cart[index].quantity<=0)cart.splice(index,1);
+renderCart();
+}
+
+function removeItem(index){
+cart.splice(index,1);
+renderCart();
+}
+
+function renderCart(){
+let box=document.getElementById("cartItems");
+let totalBox=document.getElementById("cartTotal");
+if(cart.length===0){
+box.innerHTML='<div class="empty-cart">Your cart is empty.</div>';
+totalBox.textContent="₹0";
+return;
+}
+let total=0;
+box.innerHTML=cart.map((item,index)=>{
+let subtotal=item.price*item.quantity;
+total+=subtotal;
+return `<div class="cart-item">
+<div class="cart-top">
+<img src="${item.image}" alt="${item.name}">
+<div>
+<div class="cart-item-name">${item.name}</div>
+<div class="cart-item-price">₹${item.price} each</div>
+<div class="cart-size">Size: ${item.size}</div>
+</div>
+</div>
+<div class="cart-controls">
+<button class="qty-btn" onclick="changeQuantity(${index},-1)">−</button>
+<span class="qty-number">${item.quantity}</span>
+<button class="qty-btn" onclick="changeQuantity(${index},1)">+</button>
+<button class="remove-item" onclick="removeItem(${index})">REMOVE</button>
+</div>
+</div>`;
+}).join("");
+totalBox.textContent="₹"+total;
+}
+
+function checkoutWhatsApp(){
+if(cart.length===0){
+alert("Your cart is empty.");
+return;
+}
+let total=0;
+let message="Hello NOXERA! 👋%0A%0AI want to place an order:%0A%0A";
+cart.forEach((item,index)=>{
+let subtotal=item.price*item.quantity;
+total+=subtotal;
+message+=(index+1)+". "+item.name+"%0A";
+message+="Size: "+item.size+"%0A";
+message+="Quantity: "+item.quantity+"%0A";
+message+="Price: ₹"+item.price+" each%0A";
+message+="Subtotal: ₹"+subtotal+"%0A%0A";
+});
+message+="TOTAL: ₹"+total+"%0A%0A";
+message+="Name:%0A";
+message+="Address:%0A";
+message+="Phone:%0A%0A";
+message+="Please send payment details.";
+window.open("https://wa.me/918795868347?text="+message,"_blank");
+}
+
+function openCart(){
+document.getElementById("cart").classList.add("active");
+document.getElementById("cartOverlay").classList.add("active");
+}
+
+function closeCart(){
+document.getElementById("cart").classList.remove("active");
+document.getElementById("cartOverlay").classList.remove("active");
+}
+
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("active");
+}
+
+window.addEventListener("scroll",()=>{
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+</script>
+
+</body>
+      </html>
