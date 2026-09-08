@@ -1,478 +1,534 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>NOXERA by Mrigank Sharma | Premium Streetwear</title>
-<meta name="description" content="NOXERA by Mrigank Sharma — premium streetwear. Colorblock fleece, graphic tees and wide-leg denim, made for people who don't dress to blend in.">
-<meta property="og:title" content="NOXERA by Mrigank Sharma | Premium Streetwear">
-<meta property="og:description" content="Wear the unexpected. Premium streetwear, limited runs.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0b0b0a">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NOXERA — premium modern streetwear. Built Different.">
+<title>NOXERA — Built Different.</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,450&family=Inter:wght@400;500;600&family=Silkscreen:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-/* =========================================================
-   NOXERA — DESIGN TOKENS
-   Palette pulled from the real product photography: near-black
-   ground, warm sand lifted from the colorblock sweatshirt fabric.
-   ========================================================= */
 :root{
-  --black:#0b0b0a;
-  --black-2:#121110;
-  --panel:#161513;
-  --line: rgba(244,241,236,0.10);
-  --line-strong: rgba(244,241,236,0.20);
-  --off-white:#f4f1ec;
-  --grey:#a19c92;
-  --grey-dim:#68635a;
-  --sand:#cbb494;
-  --sand-dim:#8f7d63;
-
-  --font-display:'Fraunces', serif;
-  --font-body:'Inter', sans-serif;
-  --font-mark:'Silkscreen', monospace;
-
-  --ease: cubic-bezier(.16,.84,.44,1);
-  --dur-fast:.25s;
-  --dur-mid:.55s;
-  --dur-slow:.9s;
-
-  --container:1280px;
-  --gutter: clamp(20px, 5vw, 64px);
+  --bg:#080808; --surface:#101010; --surface2:#151515; --line:#252525;
+  --text:#f5f5f2; --muted:#9b9b97; --accent:#e9ff4f; --danger:#ff5b5b;
+  --max:1280px; --radius:18px;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"DM Sans",Arial,sans-serif;line-height:1.5;overflow-x:hidden}
+body.lock{overflow:hidden}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.container{width:min(calc(100% - 36px),var(--max));margin:auto}
+.section{padding:92px 0}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
+.section-title{font-family:"Space Grotesk",sans-serif;font-size:clamp(30px,5vw,54px);line-height:.98;letter-spacing:-.04em}
+.section-copy{max-width:460px;color:var(--muted);font-size:14px}
+.btn{border:1px solid transparent;min-height:48px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;transition:.25s ease}
+.btn-primary{background:var(--accent);color:#080808}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.04)}
+.btn-ghost{border-color:#3a3a3a;background:transparent;color:var(--text)}
+.btn-ghost:hover{background:#1b1b1b;border-color:#555}
+.btn-dark{background:#fff;color:#080808}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
-*,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+header{position:fixed;z-index:50;top:0;left:0;right:0;background:rgba(8,8,8,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:23px;letter-spacing:.2em;line-height:1}
+.logo span{font-size:7px;display:block;letter-spacing:.48em;color:var(--muted);margin-top:5px}
+.creator-credit{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#aaa;white-space:nowrap;margin-left:auto;margin-right:6px}
+.nav-links{display:flex;align-items:center;gap:27px}
+.nav-links a{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#c8c8c4;transition:.2s}
+.nav-links a:hover{color:#fff}
+.nav-actions{display:flex;align-items:center;gap:9px}
+.icon-btn{position:relative;width:42px;height:42px;border:1px solid var(--line);background:#101010;color:#fff;border-radius:50%;display:grid;place-items:center}
+.icon-btn:hover{border-color:#555}
+.cart-count{position:absolute;right:-3px;top:-3px;width:17px;height:17px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#080808;font-size:9px;font-weight:800}
+.menu-btn{display:none}
+
+.hero{min-height:100svh;display:flex;align-items:end;position:relative;overflow:hidden;padding:120px 0 60px}
+.hero-media{position:absolute;inset:0;background:
+linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.38) 55%,rgba(0,0,0,.45) 100%),
+linear-gradient(0deg,rgba(8,8,8,.9),transparent 45%),
+url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=2200&q=85") center/cover}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#ddd;margin-bottom:22px}
+.hero-kicker:before{content:"";width:34px;height:1px;background:var(--accent)}
+.hero h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(64px,12vw,154px);line-height:.78;letter-spacing:-.075em;max-width:900px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{margin:30px 0 27px;color:#c9c9c5;max-width:450px;font-size:15px}
+.hero-bottom{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.scroll-note{margin-left:auto;color:#999;font-size:10px;letter-spacing:.15em;text-transform:uppercase;writing-mode:vertical-rl}
+
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:15px 0;background:#0b0b0b}
+.marquee-track{display:inline-flex;animation:marquee 24s linear infinite}
+.marquee span{font-family:"Space Grotesk";font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:0 25px;color:#aaa}
+.marquee b{color:var(--accent)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{border:1px solid var(--line);background:#0f0f0f;color:#aaa;border-radius:999px;padding:10px 15px;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.filter.active,.filter:hover{background:#eee;color:#080808;border-color:#eee}
+.search{position:relative;min-width:min(300px,100%)}
+.search input{width:100%;height:43px;border:1px solid var(--line);border-radius:999px;background:#101010;color:#fff;padding:0 17px;outline:none}
+.search input:focus{border-color:#666}
+.shop-tools{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product-card{min-width:0;position:relative}
+.product-image{aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius);background:#161616;position:relative}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1);background:#151515}
+.product-card:hover .product-image img{transform:scale(1.045)}
+.badge{position:absolute;left:11px;top:11px;z-index:2;padding:6px 9px;border-radius:999px;background:var(--accent);color:#080808;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.product-meta{padding:14px 2px 4px}
+.product-name{font-family:"Space Grotesk";font-size:15px;font-weight:600}
+.product-desc{color:#81817e;font-size:12px;margin:5px 0 9px}
+.price-row{display:flex;align-items:center;gap:9px}
+.price{font-weight:700;font-size:14px}
+.old-price{color:#666;text-decoration:line-through;font-size:12px}
+.discount{color:var(--accent);font-size:10px;font-weight:700}
+.stock{font-size:10px;color:#77d68a;margin-top:7px;text-transform:uppercase;letter-spacing:.08em}
+.stock.low{color:#f2bd67}
+.product-id{color:#555;font-size:9px;margin-top:5px;letter-spacing:.08em}
+.quick-add{position:absolute;right:12px;bottom:78px;width:40px;height:40px;border:0;border-radius:50%;background:#fff;color:#000;opacity:0;transform:translateY(8px);transition:.25s;display:grid;place-items:center}
+.product-card:hover .quick-add{opacity:1;transform:none}
+
+.feature{display:grid;grid-template-columns:1.15fr .85fr;min-height:570px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:#101010}
+.feature-img{background:url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1500&q=85") center/cover;min-height:450px}
+.feature-copy{padding:clamp(30px,6vw,78px);display:flex;flex-direction:column;justify-content:center}
+.feature-copy h2{font-family:"Space Grotesk";font-size:clamp(38px,5vw,70px);line-height:.92;letter-spacing:-.05em;margin:10px 0 22px}
+.feature-copy p{color:#999;max-width:430px;font-size:14px;margin-bottom:28px}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:11px;color:#ccc;font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:32px}
+.feature-list div:before{content:"—";color:var(--accent);margin-right:8px}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-card{border:1px solid var(--line);border-radius:24px;background:#101010;padding:38px}
+.contact-card h3{font-family:"Space Grotesk";font-size:30px;margin-bottom:10px}
+.contact-card p{color:#999;font-size:14px}
+.contact-link{display:inline-block;margin-top:25px;font-size:17px;font-weight:600;border-bottom:1px solid #555;padding-bottom:4px}
+
+footer{border-top:1px solid var(--line);padding:30px 0;color:#777;font-size:11px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.footer-logo{font-family:"Space Grotesk";font-weight:700;letter-spacing:.2em;color:#eee}
+
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:80;opacity:0;pointer-events:none;transition:.25s}
+.overlay.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:90;top:0;right:0;width:min(480px,100%);height:100dvh;background:#0c0c0c;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer-head{height:74px;padding:0 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.drawer-head h2{font-family:"Space Grotesk";font-size:21px}
+.close{width:38px;height:38px;border:1px solid var(--line);background:#111;color:#fff;border-radius:50%;font-size:20px}
+.cart-items{flex:1;overflow:auto;padding:18px 20px}
+.cart-item{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cart-thumb{width:72px;height:90px;border-radius:10px;overflow:hidden;background:#181818}
+.cart-thumb img{width:100%;height:100%;object-fit:cover}
+.cart-info h4{font-size:13px;margin-bottom:4px}
+.cart-info small{display:block;color:#777;font-size:10px;margin:2px 0}
+.qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.qty button{width:25px;height:25px;border:1px solid #333;background:#141414;color:#fff;border-radius:50%}
+.qty span{font-size:11px;min-width:14px;text-align:center}
+.remove{border:0;background:none;color:#777;font-size:11px;margin-top:7px}
+.cart-price{font-size:12px;font-weight:700}
+.cart-bottom{border-top:1px solid var(--line);padding:18px 20px;background:#0a0a0a}
+.summary-row{display:flex;justify-content:space-between;margin:7px 0;font-size:12px;color:#aaa}
+.summary-row.total{font-size:16px;color:#fff;font-weight:700;padding-top:10px;margin-top:12px;border-top:1px solid var(--line)}
+.shipping-note{font-size:10px;color:var(--accent);margin:8px 0 15px}
+.empty{text-align:center;color:#777;padding:60px 15px;font-size:13px}
+
+.modal-wrap{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.78);display:grid;place-items:center;padding:18px;opacity:0;pointer-events:none;transition:.25s}
+.modal-wrap.show{opacity:1;pointer-events:auto}
+.modal{width:min(930px,100%);max-height:94dvh;overflow:auto;background:#0e0e0e;border:1px solid #292929;border-radius:24px;position:relative;transform:translateY(15px) scale(.98);transition:.3s}
+.modal-wrap.show .modal{transform:none}
+.product-modal-grid{display:grid;grid-template-columns:1fr 1fr}
+.modal-image{min-height:610px;background:#151515}
+.modal-image img{width:100%;height:100%;min-height:610px;object-fit:cover}
+.modal-info{padding:38px}
+.modal-info h2{font-family:"Space Grotesk";font-size:36px;line-height:1;margin-bottom:10px}
+.modal-info .desc{color:#999;font-size:13px;margin:16px 0 22px}
+.option-label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.15em;margin:18px 0 8px}
+.options{display:flex;gap:7px;flex-wrap:wrap}
+.option{border:1px solid #333;background:#121212;color:#ddd;padding:10px 13px;border-radius:8px;font-size:11px}
+.option.selected{border-color:#fff;background:#fff;color:#000}
+.modal-close{position:absolute;right:15px;top:15px;z-index:4}
+.modal-actions{display:flex;gap:8px;margin-top:23px}
+.modal-actions .btn{flex:1}
+.modal-price{font-size:22px;font-weight:800}
+
+.checkout{padding:30px}
+.checkout h2{font-family:"Space Grotesk";font-size:32px;margin-bottom:7px}
+.checkout-sub{color:#888;font-size:12px;margin-bottom:22px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.12em}
+.field input,.field textarea{width:100%;background:#111;border:1px solid #2c2c2c;color:#fff;border-radius:10px;padding:12px 13px;outline:none}
+.field input:focus,.field textarea:focus{border-color:#777}
+.field textarea{min-height:85px;resize:vertical}
+.checkout-summary{margin:24px 0;border:1px solid var(--line);border-radius:14px;padding:15px}
+.checkout-items{display:grid;gap:8px;margin-bottom:13px}
+.checkout-item{display:flex;justify-content:space-between;gap:15px;font-size:11px;color:#bbb}
+.checkout-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.notice{font-size:10px;color:#777;text-align:center;margin-top:13px}
+
+.toast{position:fixed;z-index:200;bottom:22px;left:50%;transform:translate(-50%,20px);background:#f4f4f1;color:#090909;border-radius:999px;padding:11px 17px;font-size:11px;font-weight:700;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .product-grid{grid-template-columns:repeat(3,1fr)}
+  .nav-links{display:none}
+  .menu-btn{display:grid}
+  .hero h1{font-size:clamp(60px,13vw,110px)}
 }
-
-body{
-  margin:0; background:var(--black); color:var(--off-white);
-  font-family:var(--font-body); font-weight:400; line-height:1.6;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
-}
-img{ max-width:100%; display:block; }
-a{ color:inherit; text-decoration:none; }
-button{ font-family:inherit; cursor:pointer; }
-input,button,select,textarea{ font-family:inherit; }
-::selection{ background:var(--sand); color:var(--black); }
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
-  outline:2px solid var(--sand); outline-offset:3px;
-}
-
-.mark{ font-family:var(--font-mark); letter-spacing:.02em; }
-.serif{ font-family:var(--font-display); font-weight:500; }
-
-.wrap{ max-width:var(--container); margin:0 auto; padding-left:var(--gutter); padding-right:var(--gutter); }
-
-.grain{
-  position:fixed; inset:0; z-index:9998; pointer-events:none; opacity:.03; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* =========================================================
-   LOADER
-   ========================================================= */
-#loader{
-  position:fixed; inset:0; z-index:99999; background:var(--black);
-  display:flex; align-items:center; justify-content:center; flex-direction:column;
-  transition: opacity var(--dur-slow) var(--ease), visibility var(--dur-slow) var(--ease);
-}
-#loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
-.loader-logo{ font-family:var(--font-mark); font-size:clamp(2rem,7vw,3.4rem); letter-spacing:.14em; color:var(--off-white); }
-.loader-sub{ margin-top:12px; font-size:.72rem; letter-spacing:.24em; color:var(--grey); opacity:0; animation: fadeUp .8s var(--ease) .7s forwards; }
-.loader-bar{ margin-top:30px; width:min(180px,45vw); height:1px; background:var(--line); position:relative; overflow:hidden; }
-.loader-bar::after{ content:''; position:absolute; left:-40%; top:0; bottom:0; width:40%; background:var(--sand); animation: loaderSlide 1.3s ease-in-out infinite; }
-@keyframes loaderSlide{ 0%{left:-40%;} 100%{left:100%;} }
-@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
-body.loading{ overflow:hidden; height:100vh; }
-
-#site{ opacity:0; transform:translateY(6px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
-#site.revealed{ opacity:1; transform:translateY(0); }
-
-/* =========================================================
-   NAVBAR
-   ========================================================= */
-header#nav{
-  position:fixed; top:0; left:0; right:0; z-index:900; padding:24px 0;
-  transition: padding var(--dur-mid) var(--ease), background var(--dur-mid) var(--ease), border-color var(--dur-mid) var(--ease);
-  border-bottom:1px solid transparent;
-}
-header#nav.stuck{ padding:14px 0; background:rgba(11,11,10,0.86); backdrop-filter:blur(14px) saturate(140%); -webkit-backdrop-filter:blur(14px) saturate(140%); border-bottom:1px solid var(--line); }
-.nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:20px; }
-.brand{ font-family:var(--font-mark); font-size:1.15rem; letter-spacing:.1em; display:flex; align-items:baseline; gap:10px; }
-.brand small{ font-family:var(--font-body); font-size:.6rem; letter-spacing:.16em; color:var(--grey); font-weight:500; }
-.nav-links{ display:flex; align-items:center; gap:36px; list-style:none; margin:0; padding:0; }
-.nav-links a{ font-size:.86rem; color:var(--off-white); position:relative; padding:4px 0; }
-.nav-links a::after{ content:''; position:absolute; left:0; right:100%; bottom:-2px; height:1px; background:var(--sand); transition:right var(--dur-fast) var(--ease); }
-.nav-links a:hover::after{ right:0; }
-.nav-actions{ display:flex; align-items:center; gap:16px; }
-.icon-btn{ background:none; border:1px solid transparent; color:var(--off-white); position:relative; width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:2px; transition: border-color var(--dur-fast) var(--ease); }
-.icon-btn:hover{ border-color:var(--line-strong); }
-.icon-btn svg{ width:18px; height:18px; }
-#cartCount{ position:absolute; top:-4px; right:-4px; background:var(--sand); color:var(--black); font-family:var(--font-mark); font-size:.56rem; min-width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0 2px; }
-#cartCount[data-empty="true"]{ display:none; }
-.burger{ display:none; background:none; border:none; width:36px; height:36px; position:relative; }
-.burger span{ position:absolute; left:8px; right:8px; height:1px; background:var(--off-white); transition: transform var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease), top var(--dur-fast) var(--ease); }
-.burger span:nth-child(1){ top:13px; } .burger span:nth-child(2){ top:18px; } .burger span:nth-child(3){ top:23px; }
-.burger.open span:nth-child(1){ top:18px; transform:rotate(45deg); }
-.burger.open span:nth-child(2){ opacity:0; }
-.burger.open span:nth-child(3){ top:18px; transform:rotate(-45deg); }
-
-.search-flyout{ position:fixed; top:0; left:0; right:0; z-index:950; background:var(--black-2); border-bottom:1px solid var(--line); padding:26px var(--gutter); transform:translateY(-100%); transition: transform var(--dur-mid) var(--ease); }
-.search-flyout.open{ transform:translateY(0); }
-.search-flyout-inner{ max-width:var(--container); margin:0 auto; display:flex; align-items:center; gap:18px; }
-.search-flyout input{ flex:1; background:none; border:none; border-bottom:1px solid var(--line-strong); color:var(--off-white); font-family:var(--font-display); font-style:italic; font-size:clamp(1.2rem,3.4vw,1.9rem); padding:8px 2px; }
-.search-flyout input::placeholder{ color:var(--grey-dim); }
-.search-flyout input:focus{ outline:none; border-color:var(--sand); }
-.search-close{ background:none; border:1px solid var(--line-strong); color:var(--off-white); width:38px; height:38px; border-radius:50%; flex:0 0 auto; }
-
-.mobile-nav{ position:fixed; inset:0 0 0 auto; width:min(320px,84vw); z-index:940; background:var(--black-2); border-left:1px solid var(--line); transform:translateX(100%); transition: transform var(--dur-mid) var(--ease); padding:100px 30px 30px; display:flex; flex-direction:column; gap:24px; }
-.mobile-nav.open{ transform:translateX(0); }
-.mobile-nav a{ font-family:var(--font-display); font-size:1.3rem; }
-.scrim{ position:fixed; inset:0; z-index:930; background:rgba(0,0,0,.55); opacity:0; visibility:hidden; transition: opacity var(--dur-mid) var(--ease), visibility var(--dur-mid) var(--ease); }
-.scrim.show{ opacity:1; visibility:visible; }
-
-/* =========================================================
-   HERO — editorial split, real photography
-   ========================================================= */
-.hero{ position:relative; min-height:100vh; display:flex; align-items:center; padding-top:120px; padding-bottom:60px; }
-.hero-grid{ display:grid; grid-template-columns:1fr .82fr; gap:clamp(30px,6vw,90px); align-items:center; width:100%; }
-@media (max-width:940px){ .hero-grid{ grid-template-columns:1fr; } }
-.hero-kicker{ font-family:var(--font-mark); font-size:.7rem; letter-spacing:.12em; color:var(--sand); margin-bottom:22px; }
-.hero-title{ font-family:var(--font-display); font-weight:600; font-size:clamp(2.6rem,5.6vw,4.6rem); line-height:1.02; margin:0 0 22px; max-width:11ch; }
-.hero-title em{ font-style:italic; font-weight:450; color:var(--sand); }
-.hero-tagline{ max-width:44ch; color:var(--grey); font-size:1.05rem; margin-bottom:36px; }
-.hero-cta{ display:flex; gap:16px; flex-wrap:wrap; }
-.hero-media{ position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--panel); border:1px solid var(--line); }
-.hero-media img{ width:100%; height:100%; object-fit:cover; }
-.hero-media-tag{ position:absolute; bottom:18px; left:18px; background:rgba(11,11,10,.72); backdrop-filter:blur(6px); border:1px solid var(--line-strong); padding:9px 14px; font-size:.72rem; letter-spacing:.05em; }
-.hero-media-tag strong{ font-family:var(--font-display); font-style:italic; font-weight:600; margin-right:6px; }
-
-.btn{ position:relative; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:16px 28px; font-size:.82rem; letter-spacing:.03em; border:1px solid var(--off-white); background:var(--off-white); color:var(--black); overflow:hidden; isolation:isolate; transition: color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease); }
-.btn::before{ content:''; position:absolute; inset:0; background:var(--black); transform:translateY(101%); transition: transform var(--dur-mid) var(--ease); z-index:-1; }
-.btn:hover{ color:var(--off-white); }
-.btn:hover::before{ transform:translateY(0); }
-.btn:active{ transform:scale(.97); }
-.btn-outline{ background:none; color:var(--off-white); }
-.btn-outline::before{ background:var(--off-white); }
-.btn-outline:hover{ color:var(--black); }
-.btn-sm{ padding:12px 18px; font-size:.74rem; }
-.btn-block{ width:100%; }
-.btn[disabled]{ opacity:.4; pointer-events:none; }
-
-/* =========================================================
-   MARQUEE — quiet, single line
-   ========================================================= */
-.marquee{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0; overflow:hidden; background:var(--black-2); }
-.marquee-track{ display:flex; width:max-content; animation: scrollX 30s linear infinite; }
-.marquee-track span{ font-size:.82rem; letter-spacing:.08em; color:var(--grey); padding:0 1.8rem; white-space:nowrap; display:flex; align-items:center; gap:1.8rem; }
-.marquee-track span::after{ content:'—'; color:var(--sand-dim); }
-@keyframes scrollX{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-
-/* =========================================================
-   SECTION GENERIC
-   ========================================================= */
-section{ padding:min(13vh,110px) 0; position:relative; }
-.section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:52px; flex-wrap:wrap; }
-.eyebrow{ font-family:var(--font-mark); font-size:.62rem; letter-spacing:.1em; color:var(--sand-dim); margin-bottom:12px; display:block; }
-.section-title{ font-family:var(--font-display); font-weight:600; font-size:clamp(1.9rem,4vw,2.9rem); line-height:1.08; margin:0; max-width:14ch; }
-.section-note{ max-width:38ch; color:var(--grey); font-size:.96rem; }
-.reveal{ opacity:0; transform:translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-.reveal.in{ opacity:1; transform:translateY(0); }
-
-/* =========================================================
-   PRODUCTS
-   ========================================================= */
-.toolbar{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:40px; }
-.chip{ border:1px solid var(--line-strong); background:none; color:var(--grey); padding:9px 18px; font-size:.78rem; border-radius:100px; transition: all var(--dur-fast) var(--ease); }
-.chip.active, .chip:hover{ background:var(--off-white); color:var(--black); border-color:var(--off-white); }
-
-.grid-products{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-@media (max-width:980px){ .grid-products{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:560px){ .grid-products{ grid-template-columns:1fr; } }
-
-.card{ background:var(--black); position:relative; display:flex; flex-direction:column; }
-.card-media{ position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--panel); }
-.card-media img{ width:100%; height:100%; object-fit:cover; transition: transform 1.1s var(--ease); }
-.card:hover .card-media img{ transform:scale(1.045); }
-.card-tag{ position:absolute; top:14px; left:14px; font-size:.66rem; letter-spacing:.06em; padding:5px 10px; background:rgba(11,11,10,.7); border:1px solid var(--line-strong); backdrop-filter:blur(4px); }
-.card-count{ position:absolute; top:14px; right:14px; font-size:.64rem; color:var(--grey); background:rgba(11,11,10,.7); border:1px solid var(--line-strong); padding:5px 9px; }
-.card-quick{ position:absolute; left:14px; right:14px; bottom:14px; transform:translateY(12px); opacity:0; transition: all var(--dur-fast) var(--ease); }
-.card:hover .card-quick{ transform:translateY(0); opacity:1; }
-.card-body{ padding:20px 22px 24px; display:flex; flex-direction:column; gap:6px; flex:1; }
-.card-cat{ font-size:.7rem; letter-spacing:.08em; color:var(--grey-dim); }
-.card-name{ font-family:var(--font-display); font-weight:500; font-size:1.08rem; }
-.card-price{ font-size:.94rem; color:var(--sand); margin-top:2px; }
-.card-price .old{ text-decoration:line-through; color:var(--grey-dim); font-size:.8rem; margin-left:8px; }
-.card-sizes{ display:flex; gap:6px; margin-top:6px; flex-wrap:wrap; }
-.card-sizes span{ font-size:.66rem; color:var(--grey); border:1px solid var(--line); padding:2px 7px; }
-.card-actions{ display:flex; gap:8px; margin-top:14px; }
-.card-actions .btn, .card-actions .btn-outline{ flex:1; padding:11px 10px; font-size:.68rem; }
-
-.no-results{ text-align:center; padding:80px 0; color:var(--grey); display:none; }
-.no-results.show{ display:block; }
-.no-results .serif{ font-size:1.3rem; display:block; margin-bottom:10px; font-style:italic; }
-
-/* =========================================================
-   MODAL — QUICK VIEW / CHECKOUT
-   ========================================================= */
-.modal-scrim{ position:fixed; inset:0; z-index:970; background:rgba(6,6,6,.72); backdrop-filter:blur(6px); opacity:0; visibility:hidden; transition: opacity var(--dur-mid) var(--ease), visibility var(--dur-mid) var(--ease); display:flex; align-items:center; justify-content:center; padding:20px; }
-.modal-scrim.open{ opacity:1; visibility:visible; }
-.modal{ background:var(--panel); border:1px solid var(--line-strong); max-width:900px; width:100%; max-height:88vh; overflow:auto; position:relative; transform:translateY(24px) scale(.98); opacity:0; transition: all var(--dur-mid) var(--ease); }
-.modal-scrim.open .modal{ transform:translateY(0) scale(1); opacity:1; }
-.modal-close{ position:absolute; top:16px; right:16px; background:none; border:1px solid var(--line-strong); color:var(--off-white); width:36px; height:36px; border-radius:50%; z-index:5; }
-.qv-grid{ display:grid; grid-template-columns:1fr 1fr; }
-@media (max-width:720px){ .qv-grid{ grid-template-columns:1fr; } }
-.qv-media{ aspect-ratio:4/5; background:var(--black-2); overflow:hidden; position:relative; }
-.qv-media img{ width:100%; height:100%; object-fit:cover; }
-.qv-thumbs{ display:flex; gap:8px; padding:10px; }
-.qv-thumbs button{ width:52px; height:64px; border:1px solid var(--line); background:none; padding:0; overflow:hidden; opacity:.55; transition: all var(--dur-fast) var(--ease); }
-.qv-thumbs button.active, .qv-thumbs button:hover{ opacity:1; border-color:var(--sand); }
-.qv-thumbs img{ width:100%; height:100%; object-fit:cover; }
-.qv-body{ padding:34px; display:flex; flex-direction:column; gap:14px; }
-.qv-cat{ font-size:.72rem; letter-spacing:.06em; color:var(--grey-dim); }
-.qv-name{ font-family:var(--font-display); font-weight:500; font-size:1.5rem; }
-.qv-price{ font-size:1.1rem; color:var(--sand); }
-.qv-desc{ color:var(--grey); font-size:.94rem; }
-.field-label{ font-size:.7rem; letter-spacing:.08em; color:var(--grey); margin-bottom:8px; display:block; }
-.size-row{ display:flex; gap:8px; flex-wrap:wrap; }
-.size-btn{ border:1px solid var(--line-strong); background:none; color:var(--off-white); padding:9px 14px; font-size:.8rem; transition: all var(--dur-fast) var(--ease); }
-.size-btn.active, .size-btn:hover{ background:var(--off-white); color:var(--black); }
-.qty-row{ display:flex; align-items:center; border:1px solid var(--line-strong); width:fit-content; }
-.qty-row button{ background:none; border:none; color:var(--off-white); width:38px; height:38px; font-size:1.1rem; }
-.qty-row span{ width:40px; text-align:center; }
-.qv-actions{ display:flex; gap:10px; margin-top:10px; }
-
-/* =========================================================
-   CART DRAWER
-   ========================================================= */
-.cart-drawer{ position:fixed; inset:0 0 0 auto; width:min(420px,92vw); z-index:980; background:var(--panel); border-left:1px solid var(--line-strong); transform:translateX(100%); transition: transform var(--dur-mid) var(--ease); display:flex; flex-direction:column; }
-.cart-drawer.open{ transform:translateX(0); }
-.cart-head{ padding:26px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; }
-.cart-head h3{ font-family:var(--font-display); font-weight:500; margin:0; font-size:1.15rem; }
-.cart-items{ flex:1; overflow-y:auto; padding:10px 26px; }
-.cart-item{ display:flex; gap:14px; padding:18px 0; border-bottom:1px solid var(--line); }
-.cart-item img{ width:70px; height:88px; object-fit:cover; background:var(--black-2); }
-.cart-item-body{ flex:1; display:flex; flex-direction:column; gap:4px; }
-.cart-item-name{ font-family:var(--font-display); font-size:.92rem; }
-.cart-item-meta{ font-size:.74rem; color:var(--grey); }
-.cart-item-row{ display:flex; justify-content:space-between; align-items:center; margin-top:6px; }
-.cart-qty{ display:flex; align-items:center; border:1px solid var(--line-strong); }
-.cart-qty button{ background:none; border:none; color:var(--off-white); width:26px; height:26px; }
-.cart-qty span{ width:26px; text-align:center; font-size:.8rem; }
-.cart-remove{ background:none; border:none; color:var(--grey); font-size:.7rem; text-decoration:underline; }
-.cart-empty{ text-align:center; padding:60px 10px; color:var(--grey); }
-.cart-foot{ padding:22px 26px 28px; border-top:1px solid var(--line); }
-.cart-sub-row{ display:flex; justify-content:space-between; font-size:.9rem; margin-bottom:8px; color:var(--grey); }
-.cart-total-row{ display:flex; justify-content:space-between; font-family:var(--font-display); font-weight:500; font-size:1.15rem; margin:14px 0 18px; }
-.cart-clear{ display:block; text-align:center; margin-top:12px; font-size:.72rem; color:var(--grey); text-decoration:underline; background:none; border:none; width:100%; }
-
-/* =========================================================
-   COLLECTIONS
-   ========================================================= */
-.coll-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-@media (max-width:900px){ .coll-grid{ grid-template-columns:1fr; } }
-.coll-card{ position:relative; aspect-ratio:3/4; overflow:hidden; border:1px solid var(--line); cursor:pointer; }
-.coll-card img{ width:100%; height:100%; object-fit:cover; filter:grayscale(35%) brightness(.72); transition: all .8s var(--ease); }
-.coll-card:hover img{ filter:grayscale(0%) brightness(.6); transform:scale(1.05); }
-.coll-label{ position:absolute; left:22px; bottom:22px; z-index:2; }
-.coll-label .serif{ font-size:1.5rem; font-style:italic; }
-.coll-label small{ display:block; color:var(--grey); font-size:.72rem; letter-spacing:.06em; margin-top:6px; }
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-.about-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:80px; align-items:center; }
-@media (max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:40px; } }
-.about-media{ position:relative; aspect-ratio:4/5; overflow:hidden; border:1px solid var(--line); }
-.about-media img{ width:100%; height:100%; object-fit:cover; }
-.about-copy p{ color:var(--grey); font-size:1.02rem; margin-bottom:18px; max-width:52ch; }
-.about-copy p:first-of-type{ color:var(--off-white); font-family:var(--font-display); font-style:italic; font-weight:450; font-size:1.3rem; line-height:1.4; }
-.stat-row{ display:flex; gap:40px; margin-top:32px; flex-wrap:wrap; }
-.stat-row div strong{ font-family:var(--font-display); font-weight:600; font-size:1.9rem; display:block; }
-.stat-row div span{ font-size:.72rem; letter-spacing:.05em; color:var(--grey); }
-
-/* =========================================================
-   WHY NOXERA — quiet text rows, no icon cliché
-   ========================================================= */
-.why-list{ border-top:1px solid var(--line); }
-.why-row{ display:grid; grid-template-columns:1.4fr 2fr; gap:40px; padding:32px 0; border-bottom:1px solid var(--line); align-items:baseline; }
-@media (max-width:720px){ .why-row{ grid-template-columns:1fr; gap:10px; } }
-.why-row h3{ font-family:var(--font-display); font-weight:500; font-size:1.25rem; margin:0; }
-.why-row p{ color:var(--grey); font-size:.94rem; margin:0; max-width:52ch; }
-
-/* =========================================================
-   NEWSLETTER
-   ========================================================= */
-.newsletter{ background:var(--black-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center; }
-.newsletter .section-title{ margin:0 auto 14px; }
-.newsletter p{ color:var(--grey); max-width:46ch; margin:0 auto 34px; }
-.news-form{ display:flex; gap:0; max-width:440px; margin:0 auto; border:1px solid var(--line-strong); }
-.news-form input{ flex:1; background:none; border:none; color:var(--off-white); padding:16px 18px; font-size:.92rem; }
-.news-form input:focus{ outline:none; }
-.news-form button{ border:none; background:var(--off-white); color:var(--black); padding:0 24px; font-size:.76rem; }
-.news-msg{ margin-top:16px; font-size:.82rem; color:var(--sand); min-height:1.2em; }
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
-.contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
-@media (max-width:850px){ .contact-grid{ grid-template-columns:1fr; gap:36px; } }
-.contact-line{ display:flex; justify-content:space-between; padding:18px 0; border-bottom:1px solid var(--line); font-size:.92rem; }
-.contact-line span:first-child{ color:var(--grey); font-size:.74rem; }
-.contact-line a:hover{ text-decoration:underline; }
-.contact-form .field{ margin-bottom:18px; }
-.contact-form label{ display:block; font-size:.7rem; letter-spacing:.05em; color:var(--grey); margin-bottom:8px; }
-.contact-form input, .contact-form textarea{ width:100%; background:none; border:1px solid var(--line-strong); color:var(--off-white); padding:13px 14px; font-size:.92rem; }
-.contact-form textarea{ min-height:110px; resize:vertical; }
-.contact-form input:focus, .contact-form textarea:focus{ outline:none; border-color:var(--sand); }
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-footer{ border-top:1px solid var(--line); padding:70px 0 30px; }
-.foot-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:60px; }
-@media (max-width:800px){ .foot-top{ grid-template-columns:1fr 1fr; } }
-@media (max-width:480px){ .foot-top{ grid-template-columns:1fr; } }
-.foot-brand .brand{ margin-bottom:14px; }
-.foot-brand p{ color:var(--grey); font-size:.86rem; max-width:34ch; }
-.foot-col h4{ font-size:.7rem; letter-spacing:.08em; color:var(--grey); margin:0 0 18px; }
-.foot-col a{ display:block; font-size:.86rem; margin-bottom:12px; color:var(--off-white); }
-.foot-col a:hover{ text-decoration:underline; }
-.foot-bottom{ border-top:1px solid var(--line); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:.74rem; color:var(--grey-dim); }
-
-.toast{ position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(20px); z-index:995; background:var(--off-white); color:var(--black); padding:14px 22px; font-size:.82rem; opacity:0; transition: all var(--dur-fast) var(--ease); display:flex; align-items:center; gap:10px; max-width:min(360px,86vw); text-align:left; }
-.toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
-
-@media (max-width:880px){
-  .nav-links{ display:none; }
-  .burger{ display:block; }
+@media(max-width:700px){
+  .container{width:min(calc(100% - 24px),var(--max))}
+  .section{padding:66px 0}
+  .nav{height:64px}
+  .logo{font-size:20px}
+  .creator-credit{font-size:9px;letter-spacing:.05em;margin-left:auto;margin-right:0}
+  .hero{min-height:88svh;padding-bottom:38px}
+  .hero-media{background-position:62% center}
+  .scroll-note{display:none}
+  .hero-sub{font-size:13px;margin:22px 0}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .product-image{border-radius:13px}
+  .product-meta{padding-top:10px}
+  .product-name{font-size:13px}
+  .product-desc{font-size:10px}
+  .quick-add{opacity:1;transform:none;width:34px;height:34px;right:8px;bottom:75px}
+  .section-head{display:block}
+  .section-copy{margin-top:12px}
+  .shop-tools{align-items:stretch}
+  .search{min-width:100%}
+  .filters{order:2}
+  .feature{grid-template-columns:1fr;border-radius:18px}
+  .feature-img{min-height:420px}
+  .feature-copy{padding:34px 25px}
+  .contact{grid-template-columns:1fr}
+  .contact-card{padding:27px}
+  .footer-row{align-items:flex-start;flex-direction:column}
+  .product-modal-grid{grid-template-columns:1fr}
+  .modal-image,.modal-image img{min-height:390px;height:390px}
+  .modal-info{padding:25px 20px}
+  .modal-info h2{font-size:28px}
+  .checkout{padding:24px 18px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .checkout-actions{grid-template-columns:1fr}
 }
 </style>
 </head>
-<body class="loading">
-
-<div id="loader" aria-hidden="true">
-  <div class="loader-logo mark">NOXERA</div>
-  <div class="loader-sub mark">by Mrigank Sharma</div>
-  <div class="loader-bar"></div>
-</div>
-
-<div class="grain"></div>
-
-<div id="site">
-
-<header id="nav">
-  <div class="wrap nav-inner">
-    <a href="#home" class="brand mark">NOXERA<small>BY MRIGANK SHARMA</small></a>
-    <nav aria-label="Primary">
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#shop">Shop</a></li>
-        <li><a href="#collections">Collections</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="nav-actions">
-      <button class="icon-btn" id="searchBtn" aria-label="Search products">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
-      </button>
-      <button class="icon-btn" id="cartBtn" aria-label="Open cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h15l-1.5 9.5a2 2 0 0 1-2 1.5H8a2 2 0 0 1-2-1.5L4 3H2"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
-        <span id="cartCount" data-empty="true">0</span>
-      </button>
-      <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+<body>
+<header>
+  <nav class="nav container">
+    <a href="#home" class="logo">NOXERA<span>BUILT DIFFERENT</span></a>
+    <div class="creator-credit">By Mrigank Sharma</div>
+    <div class="nav-links">
+      <a href="#home">Home</a><a href="#tshirts">T-Shirts</a><a href="#pants">Pants</a>
+      <a href="#new">New Arrivals</a>
     </div>
-  </div>
+    <div class="nav-actions">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <button class="icon-btn" id="cartBtn" aria-label="Open cart">🛒<b class="cart-count" id="cartCount">0</b></button>
+    </div>
+  </nav>
 </header>
 
-<div class="search-flyout" id="searchFlyout">
-  <div class="search-flyout-inner">
-    <input type="text" id="searchInput" placeholder="Search the drop…" autocomplete="off">
-    <button class="search-close" id="searchClose" aria-label="Close search">✕</button>
-  </div>
-</div>
-
-<div class="mobile-nav" id="mobileNav">
-  <a href="#home">Home</a>
-  <a href="#shop">Shop</a>
-  <a href="#collections">Collections</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-</div>
-<div class="scrim" id="scrim"></div>
-
-<!-- ================= HERO ================= -->
+<main>
 <section class="hero" id="home">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="hero-kicker mark">NOXERA — PREMIUM STREETWEAR</span>
-      <h1 class="hero-title">Wear the <em>unexpected.</em></h1>
-      <p class="hero-tagline">NOXERA by Mrigank Sharma. Heavyweight fleece, graphic tees and wide-leg denim, cut oversized and made in small, limited runs.</p>
-      <div class="hero-cta">
-        <a href="#shop" class="btn">Shop the drop</a>
-        <a href="#about" class="btn btn-outline">Our story</a>
-      </div>
-    </div>
-    <div class="hero-media reveal">
-     <div class="hero-media-tag"><strong>New</strong>Colorblock Panel Sweatshirt</div>
+  <div class="hero-media"></div>
+  <div class="container hero-content reveal">
+    <div class="hero-kicker">NOXERA / NEW SEASON</div>
+    <h1>BUILT<br><em>DIFFERENT.</em></h1>
+    <p class="hero-sub">Premium streetwear for people who don't dress to blend in. Clean silhouettes. Strong attitude. Zero compromise.</p>
+    <div class="hero-bottom">
+      <a class="btn btn-primary" href="#products">Shop Now ↗</a>
+      <a class="btn btn-ghost" href="#new">Explore New Arrivals</a>
+      <span class="scroll-note">Scroll to discover ↓</span>
     </div>
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marqueeTrack"></div></div>
+<div class="marquee"><div class="marquee-track">
+  <span>NOXERA <b>•</b> BUILT DIFFERENT</span><span>PREMIUM STREETWEAR <b>•</b> MADE TO MOVE</span><span>NOXERA <b>•</b> BUILT DIFFERENT</span><span>PREMIUM STREETWEAR <b>•</b> MADE TO MOVE</span>
+</div></div>
 
-<!-- ================= SHOP ================= -->
-<section id="shop">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow mark">FEATURED</span>
-        <h2 class="section-title">The current rotation</h2>
+<section class="section reveal" id="products">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">The collection</div><h2 class="section-title">Shop the drop.</h2></div>
+      <p class="section-copy">Everyday essentials, refined. Explore statement tees and relaxed pants designed around a modern streetwear fit.</p>
+    </div>
+    <div class="shop-tools">
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="All">All</button>
+        <button class="filter" data-filter="T-Shirts">T-Shirts</button>
+        <button class="filter" data-filter="Pants">Pants</button>
+        <button class="filter" data-filter="New Arrivals">New Arrivals</button>
       </div>
-      <p class="section-note">Every piece here is real stock, photographed as it ships. Once a size sells out, it's gone.</p>
+      <div class="search"><input id="searchInput" type="search" placeholder="Search the collection..." aria-label="Search products"></div>
     </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
 
-    <div class="toolbar reveal" id="filterBar">
-      <button class="chip active" data-filter="all">All</button>
-      <button class="chip" data-filter="Sweatshirts">Sweatshirts</button>
-      <button class="chip" data-filter="Tees">Tees</button>
-      <button class="chip" data-filter="Bottoms">Denim</button>
-    </div>
-
-    <div class="grid-products reveal" id="productGrid"></div>
-    <div class="no-results" id="noResults">
-      <span class="serif">No products found</span>
-      Try a different search term or clear the filters.
+<section class="section reveal" id="new">
+  <div class="container">
+    <div class="feature">
+      <div class="feature-img"></div>
+      <div class="feature-copy">
+        <div class="eyebrow">NOXERA / 01</div>
+        <h2>Less noise.<br>More presence.</h2>
+        <p>Built around clean cuts, relaxed proportions and a monochrome-first attitude. This is streetwear stripped back to what matters.</p>
+        <div class="feature-list"><div>Heavyweight feel</div><div>Relaxed silhouettes</div><div>Everyday comfort</div><div>Limited drops</div></div>
+        <a class="btn btn-primary" href="#products">Shop the collection ↗</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= COLLECTIONS ================= -->
-<section id="collections">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow mark">SHOP BY CATEGORY</span>
-        <h2 class="section-title">Three racks, one identity</h2>
-      </div>
-      <p class="section-note">Fleece, graphics and denim — the three categories that make up the current NOXERA catalog.</p>
-    </div>
-    <div class="coll-grid reveal" id="collGrid"></div>
+<section class="section reveal" id="tshirts">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">01 / T-Shirts</div><h2 class="section-title">The everyday uniform.</h2></div></div>
+    <div class="product-grid" id="tshirtGrid"></div>
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section id="about">
-  <div class="wrap about-grid">
-    <div class="about-media reveal">
-      
+<section class="section reveal" id="pants">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">02 / Pants</div><h2 class="section-title">Move different.</h2></div></div>
+    <div class="product-grid" id="pantsGrid"></div>
+  </div>
+</section>
+
+<section class="section reveal" id="contact">
+  <div class="container">
+    <div class="eyebrow">Contact NOXERA</div>
+    <div class="contact">
+      <div class="contact-card"><h3>Need help?</h3><p>Questions about products, sizes or your order? Reach out and we'll get back to you.</p><a class="contact-link" id="phoneLink"></a></div>
+      <div class="contact-card"><h3>Order directly.</h3><p>Online payment and COD are not available. Orders are confirmed through WhatsApp or Email only.</p><a class="contact-link" id="emailLink"></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container footer-row"><div class="footer-logo">NOXERA</div><div>© 2026 NOXERA. Built Different.</div><div>By <strong style="color:#bdbdb8;font-weight:600;letter-spacing:.04em;">MRIGANK SHARMA</strong></div><div>Orders via WhatsApp / Email only.</div></div></footer>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="cartDrawer">
+  <div class="drawer-head"><h2>Your Cart</h2><button class="close" id="closeCart">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-bottom">
+    <div class="summary-row"><span>Subtotal</span><b id="cartSubtotal">₹0</b></div>
+    <div class="summary-row"><span>Shipping</span><b id="cartShipping">₹0</b></div>
+    <div class="shipping-note" id="shippingNote"></div>
+    <div class="summary-row total"><span>Total</span><b id="cartTotal">₹0</b></div>
+    <button class="btn btn-primary" style="width:100%;margin-top:14px" id="checkoutBtn">Checkout / Place Order</button>
+  </div>
+</aside>
+
+<div class="modal-wrap" id="productModal">
+  <div class="modal">
+    <button class="close modal-close" id="closeProduct">×</button>
+    <div class="product-modal-grid">
+      <div class="modal-image"><img id="modalImage" alt=""></div>
+      <div class="modal-info">
+        <div class="eyebrow" id="modalCategory"></div>
+        <h2 id="modalName"></h2>
+        <div class="price-row"><span class="modal-price" id="modalPrice"></span><span class="old-price" id="modalOldPrice"></span><span class="discount" id="modalDiscount"></span></div>
+        <p class="desc" id="modalDesc"></p>
+        <div class="option-label">Size</div><div class="options" id="sizeOptions"></div>
+        <div class="option-label">Color</div><div class="options" id="colorOptions"></div>
+        <div class="option-label">Quantity</div>
+        <div class="qty"><button id="modalMinus">−</button><span id="modalQty">1</span><button id="modalPlus">+</button></div>
+        <div class="modal-actions"><button class="btn btn-ghost" id="addToCartBtn">Add to Cart</button><button class="btn btn-primary" id="buyNowBtn">Buy Now</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-wrap" id="checkoutModal">
+  <div class="modal">
+    <button class="close modal-close" id="closeCheckout">×</button>
+    <div class="checkout">
+      <div class="eyebrow">Secure order details</div>
+      <h2>Complete your order.</h2>
+      <p class="checkout-sub">No online payment. Choose WhatsApp or Email after entering your delivery details.</p>
+      <form id="checkoutForm">
+        <div class="form-grid">
+          <div class="field"><label>Full Name</label><input name="name" required maxlength="80" autocomplete="name"></div>
+          <div class="field"><label>Mobile Number</label><input name="phone" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number"></div>
+          <div class="field full"><label>Shipping Address</label><textarea name="address" required maxlength="250" autocomplete="street-address"></textarea></div>
+          <div class="field"><label>City</label><input name="city" required maxlength="60" autocomplete="address-level2"></div>
+          <div class="field"><label>State</label><input name="state" required maxlength="60" autocomplete="address-level1"></div>
+          <div class="field"><label>Pincode</label><input name="pincode" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="postal-code"></div>
+        </div>
+        <div class="checkout-summary"><div class="eyebrow">Order summary</div><div class="checkout-items" id="checkoutItems"></div><div class="summary-row"><span>Subtotal</span><b id="checkoutSubtotal"></b></div><div class="summary-row"><span>Shipping</span><b id="checkoutShipping"></b></div><div class="summary-row total"><span>Total</span><b id="checkoutTotal"></b></div></div>
+        <div class="checkout-actions">
+          <button class="btn btn-primary" type="submit" data-method="whatsapp">Order on WhatsApp ↗</button>
+          <button class="btn btn-dark" type="submit" data-method="email">Order by Email ↗</button>
+        </div>
+        <p class="notice">Orders are confirmed through WhatsApp or Email only.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ================= NOXERA SETTINGS =================
+const STORE_NAME = "NOXERA";
+const WHATSAPP_NUMBER = "918795868347";
+const ORDER_EMAIL = "nikhil.manjari@gmail.com";
+const CONTACT_PHONE = "+91 8795868347";
+const SHIPPING_CHARGE = 59;
+const FREE_SHIPPING_THRESHOLD = 1500;
+
+// ================= PRODUCT DATA =================
+// Replace only the values in this array. Main website functionality does not need to change.
+const PRODUCTS = [
+  {id:"NX-TS-001",name:"Core Heavy Tee",category:"T-Shirts",price:799,originalPrice:1199,description:"Heavyweight cotton tee with a clean oversized silhouette.",sizes:["S","M","L","XL"],colors:["Black","White"],stock:"In Stock",newArrival:true,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-TS-002",name:"No Signal Oversized Tee",category:"T-Shirts",price:899,originalPrice:1299,description:"Relaxed-fit street tee with understated graphic energy.",sizes:["M","L","XL","XXL"],colors:["Black","Charcoal"],stock:"In Stock",newArrival:true,image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-TS-003",name:"Noxera Essential Tee",category:"T-Shirts",price:699,originalPrice:999,description:"Soft premium jersey with a sharp everyday fit.",sizes:["S","M","L","XL"],colors:["White","Stone"],stock:"In Stock",newArrival:false,image:"https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-TS-004",name:"After Dark Street Tee",category:"T-Shirts",price:849,originalPrice:1199,description:"Dark tonal streetwear tee designed for night-ready looks.",sizes:["S","M","L","XL","XXL"],colors:["Black","Olive"],stock:"Low Stock",newArrival:true,image:"https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-TS-005",name:"Mono Boxy Tee",category:"T-Shirts",price:749,originalPrice:1099,description:"Boxy proportions and a minimal finish for effortless layering.",sizes:["S","M","L","XL"],colors:["Off White","Black"],stock:"In Stock",newArrival:false,image:"https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-PT-001",name:"Utility Cargo Pant",category:"Pants",price:1299,originalPrice:1799,description:"Relaxed cargo with utility pockets and a tapered street fit.",sizes:["28","30","32","34","36"],colors:["Black","Olive"],stock:"In Stock",newArrival:true,image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-PT-002",name:"Core Relaxed Pant",category:"Pants",price:1199,originalPrice:1599,description:"Easy relaxed trousers made for everyday movement.",sizes:["28","30","32","34","36"],colors:["Black","Charcoal"],stock:"In Stock",newArrival:false,image:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-PT-003",name:"Street Cargo 02",category:"Pants",price:1399,originalPrice:1999,description:"Statement cargo silhouette with clean hardware and deep utility pockets.",sizes:["30","32","34","36"],colors:["Charcoal","Beige"],stock:"Low Stock",newArrival:true,image:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-PT-004",name:"Everyday Wide Pant",category:"Pants",price:1099,originalPrice:1499,description:"Wide-leg casual pants with a premium minimal finish.",sizes:["28","30","32","34"],colors:["Black","Sand"],stock:"In Stock",newArrival:false,image:"https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=900&q=80"},
+  {id:"NX-PT-005",name:"Midnight Tech Pant",category:"Pants",price:1499,originalPrice:1999,description:"Modern utility pant with a sleek technical streetwear profile.",sizes:["30","32","34","36"],colors:["Black"],stock:"In Stock",newArrival:true,image:"https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=900&q=80"}
+];
+
+const money = n => "₹" + Number(n).toLocaleString("en-IN");
+let cart = JSON.parse(localStorage.getItem("noxera_cart") || "[]");
+let activeFilter = "All";
+let activeProduct = null;
+let selectedSize = "";
+let selectedColor = "";
+let modalQty = 1;
+
+const $ = id => document.getElementById(id);
+const saveCart = () => localStorage.setItem("noxera_cart", JSON.stringify(cart));
+function showToast(msg){$("toast").textContent=msg;$("toast").classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$("toast").classList.remove("show"),2200)}
+function discount(p){return p.originalPrice ? Math.round((1-p.price/p.originalPrice)*100) : 0}
+function imgFallback(img){
+  img.onerror=()=>{img.onerror=null;img.src="data:image/svg+xml;charset=UTF-8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 875"><rect width="700" height="875" fill="#171717"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#777" font-family="Arial" font-size="24">NOXERA</text></svg>')}
+}
+function card(p){
+  const d=discount(p);
+  return `<article class="product-card" data-id="${p.id}">
+    <div class="product-image">${d?`<span class="badge">${d}% OFF</span>`:""}<img loading="lazy" src="${p.image}" alt="${p.name}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 875"><rect width="700" height="875" fill="#171717"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#777" font-family="Arial" font-size="24">NOXERA</text></svg>')}';"><button class="quick-add" aria-label="Add ${p.name} to cart">＋</button></div>
+    <div class="product-meta"><div class="product-name">${p.name}</div><div class="product-desc">${p.description}</div><div class="price-row"><span class="price">${money(p.price)}</span>${p.originalPrice?`<span class="old-price">${money(p.originalPrice)}</span><span class="discount">${d}% OFF</span>`:""}</div><div class="stock ${p.stock==="Low Stock"?"low":""}">${p.stock}</div><div class="product-id">${p.id}</div></div>
+  </article>`;
+}
+function filteredProducts(){
+  const q=$("searchInput").value.trim().toLowerCase();
+  return PRODUCTS.filter(p=>(activeFilter==="All"||(activeFilter==="New Arrivals"?p.newArrival:p.category===activeFilter)) && (!q||(p.name+" "+p.description+" "+p.category).toLowerCase().includes(q)));
+}
+function renderGrid(list=filteredProducts()){ $("productGrid").innerHTML=list.map(card).join("") || '<div class="empty" style="grid-column:1/-1">No products found.</div>'; bindCards($("productGrid")); }
+function bindCards(root){root.querySelectorAll(".product-card").forEach(el=>{el.addEventListener("click",e=>{const p=PRODUCTS.find(x=>x.id===el.dataset.id);if(e.target.closest(".quick-add")){quickAdd(p);return}openProduct(p)})})}
+function quickAdd(p){cart.push({key:Date.now()+"_"+Math.random(),id:p.id,size:p.sizes[0],color:p.colors[0],qty:1});saveCart();renderCart();showToast("Added to cart")}
+function openProduct(p){
+  activeProduct=p;selectedSize=p.sizes[0];selectedColor=p.colors[0];modalQty=1;
+  $("modalImage").src=p.image;$("modalImage").alt=p.name;imgFallback($("modalImage"));
+  $("modalCategory").textContent=p.category+(p.newArrival?" / NEW ARRIVAL":"");
+  $("modalName").textContent=p.name;$("modalPrice").textContent=money(p.price);
+  $("modalOldPrice").textContent=p.originalPrice?money(p.originalPrice):"";
+  $("modalDiscount").textContent=p.originalPrice?discount(p)+"% OFF":"";
+  $("modalDesc").textContent=p.description+" Product ID: "+p.id+".";
+  $("sizeOptions").innerHTML=p.sizes.map(s=>`<button class="option ${s===selectedSize?"selected":""}" data-size="${s}">${s}</button>`).join("");
+  $("colorOptions").innerHTML=p.colors.map(c=>`<button class="option ${c===selectedColor?"selected":""}" data-color="${c}">${c}</button>`).join("");
+  $("modalQty").textContent=modalQty;
+  $("sizeOptions").querySelectorAll("[data-size]").forEach(b=>b.onclick=()=>{selectedSize=b.dataset.size;$("sizeOptions").querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")});
+  $("colorOptions").querySelectorAll("[data-color]").forEach(b=>b.onclick=()=>{selectedColor=b.dataset.color;$("colorOptions").querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")});
+  $("productModal").classList.add("show");document.body.classList.add("lock");
+}
+function closeProduct(){ $("productModal").classList.remove("show"); if(!$("cartDrawer").classList.contains("open"))document.body.classList.remove("lock") }
+function addLine(p,size,color,qty){
+  const existing=cart.find(x=>x.id===p.id&&x.size===size&&x.color===color);
+  if(existing) existing.qty+=qty; else cart.push({key:Date.now()+"_"+Math.random(),id:p.id,size,color,qty});
+  saveCart();renderCart();
+}
+function renderCart(){
+  const items=$("cartItems");
+  if(!cart.length) items.innerHTML='<div class="empty">Your cart is empty.<br><br>Start with something different.</div>';
+  else items.innerHTML=cart.map((x,i)=>{const p=PRODUCTS.find(y=>y.id===x.id);return `<div class="cart-item"><div class="cart-thumb"><img loading="lazy" src="${p.image}" alt="${p.name}" onerror="this.style.opacity='.3'"></div><div class="cart-info"><h4>${p.name}</h4><small>Size: ${x.size} · Color: ${x.color}</small><small>${money(p.price)} each</small><div class="qty"><button data-minus="${i}">−</button><span>${x.qty}</span><button data-plus="${i}">+</button></div><button class="remove" data-remove="${i}">Remove</button></div><div class="cart-price">${money(p.price*x.qty)}</div></div>`}).join("");
+  items.querySelectorAll("[data-minus]").forEach(b=>b.onclick=()=>changeQty(+b.dataset.minus,-1));
+  items.querySelectorAll("[data-plus]").forEach(b=>b.onclick=()=>changeQty(+b.dataset.plus,1));
+  items.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{cart.splice(+b.dataset.remove,1);saveCart();renderCart()});
+  const sub=cart.reduce((s,x)=>s+(PRODUCTS.find(p=>p.id===x.id).price*x.qty),0);
+  const ship=sub===0?0:(sub>=FREE_SHIPPING_THRESHOLD?0:SHIPPING_CHARGE);
+  $("cartSubtotal").textContent=money(sub);$("cartShipping").textContent=ship?money(ship):"FREE";$("cartTotal").textContent=money(sub+ship);
+  $("shippingNote").textContent=sub>0&&sub<FREE_SHIPPING_THRESHOLD?`Add ${money(FREE_SHIPPING_THRESHOLD-sub)} more for FREE shipping.`:sub>=FREE_SHIPPING_THRESHOLD?"You unlocked FREE shipping.":"";
+  $("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+}
+function changeQty(i,delta){cart[i].qty+=delta;if(cart[i].qty<=0)cart.splice(i,1);saveCart();renderCart()}
+function openCart(){$("cartDrawer").classList.add("open");$("overlay").classList.add("show");document.body.classList.add("lock")}
+function closeCart(){$("cartDrawer").classList.remove("open");$("overlay").classList.remove("show");if(!$("productModal").classList.contains("show")&&!$("checkoutModal").classList.contains("show"))document.body.classList.remove("lock")}
+function totals(){const sub=cart.reduce((s,x)=>s+PRODUCTS.find(p=>p.id===x.id).price*x.qty,0);const ship=sub===0?0:(sub>=FREE_SHIPPING_THRESHOLD?0:SHIPPING_CHARGE);return{sub,ship,total:sub+ship}}
+function openCheckout(){
+  if(!cart.length){showToast("Your cart is empty");return}
+  closeCart();const t=totals();
+  $("checkoutItems").innerHTML=cart.map(x=>{const p=PRODUCTS.find(y=>y.id===x.id);return `<div class="checkout-item"><span>${p.name} · ${x.size} · ${x.color} × ${x.qty}</span><b>${money(p.price*x.qty)}</b></div>`}).join("");
+  $("checkoutSubtotal").textContent=money(t.sub);$("checkoutShipping").textContent=t.ship?money(t.ship):"FREE";$("checkoutTotal").textContent=money(t.total);
+  $("checkoutModal").classList.add("show");document.body.classList.add("lock");
+}
+function closeCheckout(){ $("checkoutModal").classList.remove("show"); if(!$("cartDrawer").classList.contains("open"))document.body.classList.remove("lock") }
+function buildOrder(form){
+  const d=new FormData(form), t=totals();
+  let items=cart.map(x=>{const p=PRODUCTS.find(y=>y.id===x.id);return `- ${p.name} | Size: ${x.size} | Color: ${x.color} | Quantity: ${x.qty} | Price: ${money(p.price*x.qty)}`}).join("\n");
+  return `NOXERA ORDER
+
+Customer Name: ${d.get("name")}
+Phone: ${d.get("phone")}
+Shipping Address: ${d.get("address")}
+City: ${d.get("city")}
+State: ${d.get("state")}
+Pincode: ${d.get("pincode")}
+
+Order Items:
+
+${items}
+
+Subtotal: ${money(t.sub)}
+Shipping: ${t.ship?money(t.ship):"FREE"}
+Total: ${money(t.total)}
+
+Orders are confirmed through WhatsApp or Email only.`;
+}
+
+$("filters").querySelectorAll(".filter").forEach(b=>b.onclick=()=>{$("filters").querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");activeFilter=b.dataset.filter;renderGrid()});
+$("searchInput").addEventListener("input",()=>renderGrid());
+$("cartBtn").onclick=openCart;$("closeCart").onclick=closeCart;$("overlay").onclick=closeCart;
+$("closeProduct").onclick=closeProduct;$("closeCheckout").onclick=closeCheckout;
+$("modalMinus").onclick=()=>{if(modalQty>1){modalQty--;$("modalQty").textContent=modalQty}};
+$("modalPlus").onclick=()=>{if(modalQty<10){modalQty++;$("modalQty").textContent=modalQty}};
+$("addToCartBtn").onclick=()=>{addLine(activeProduct,selectedSize,selectedColor,modalQty);closeProduct();openCart();showToast("Added to cart")};
+$("buyNowBtn").onclick=()=>{addLine(activeProduct,selectedSize,selectedColor,modalQty);closeProduct();openCheckout()};
+$("checkoutBtn").onclick=openCheckout;
+$("checkoutForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  if(!e.currentTarget.reportValidity())return;
+  const method=e.submitter.dataset.method, data=buildOrder(e.currentTarget);
+  if(method==="whatsapp") window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(data),"_blank");
+  else window.location.href="mailto:"+ORDER_EMAIL+"?subject="+encodeURIComponent("NOXERA ORDER — "+new FormData(e.currentTarget).get("name"))+"&body="+encodeURIComponent(data);
+});
+$("menuBtn").onclick=()=>{const links=document.querySelector(".nav-links");links.style.display=links.style.display==="flex"?"":"flex";links.style.position="absolute";links.style.top="64px";links.style.left="12px";links.style.right="12px";links.style.padding="15px";links.style.background="#101010";links.style.border="1px solid #292929";links.style.borderRadius="14px";links.style.flexDirection="column";links.style.alignItems="flex-start";links.querySelectorAll("a").forEach(a=>a.onclick=()=>links.style.display="")};
+$("phoneLink").textContent=CONTACT_PHONE;$("phoneLink").href="tel:"+CONTACT_PHONE.replace(/\s/g,"");
+$("emailLink").textContent=ORDER_EMAIL;$("emailLink").href="mailto:"+ORDER_EMAIL;
+
+renderGrid();renderCart();
+$("tshirtGrid").innerHTML=PRODUCTS.filter(p=>p.category==="T-Shirts").slice(0,4).map(card).join("");bindCards($("tshirtGrid"));
+$("pantsGrid").innerHTML=PRODUCTS.filter(p=>p.category==="Pants").slice(0,4).map(card).join("");bindCards($("pantsGrid"));
+
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+</script>
+</body>
+   </html>
